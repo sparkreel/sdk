@@ -1,0 +1,13 @@
+{
+    "name": "sparkreel/sdk",
+    "description": "Sparkreels SDK",
+    "authors": [
+        {
+            "name": "Tabaré Caorsi",
+            "email": "tabare@teamsparkreel.com"
+        }
+    ],
+    "require": {
+        "guzzle/guzzle": "~3.7"
+    }
+}
