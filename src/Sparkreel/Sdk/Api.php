@@ -21,8 +21,8 @@ class Api
      * or anything else as they will be ignored, and use the $client parameter. This
      * is specially meant to be helpful in testing.
      *
-     * @param string $baseUrl
-     * @param array $options
+     * @param string                 $baseUrl
+     * @param array                  $options
      * @param \Guzzle\Service\Client $client
      */
     public function __construct($baseUrl = "https://www.sparkreel.com/api", $options=array(), \Guzzle\Service\Client &$client = null)
