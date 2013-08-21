@@ -1,0 +1,46 @@
+{
+    "name": "Sparkreel",
+    "apiVersion": "0",
+
+    "description": "Sparkreel REST API client",
+    "operations": {
+        "GetGroupVideos": {
+            "httpMethod": "GET",
+            "uri": "group/{id}/videos",
+            "summary": "Returns the 20 most recent mentions for the authenticating user.",
+            "parameters": {
+                "id": {
+                    "description": "The id of the group to get videos from",
+                    "type": "integer",
+                    "location": "uri"
+                },
+                "format": {
+                    "description": "Specifies the format of the response, json or xml, right now only json",
+                    "type": "string",
+                    "location": "query",
+                    "default": "json"
+                },
+                "page": {
+                    "description": "The requested page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 1
+                },
+                "per_page": {
+                    "description": "The number of videos per page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 20
+                }
+            }
+        }
+    },
+    "models": {
+        "GetMentionsOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}
