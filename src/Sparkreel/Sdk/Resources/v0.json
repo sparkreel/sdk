@@ -1,7 +1,7 @@
 {
     "name": "Sparkreel",
     "apiVersion": "0",
-
+    "base_url": "https://www.sparkreel.com/api",
     "description": "Sparkreel REST API client",
     "operations": {
         "GetGroupVideos": {
