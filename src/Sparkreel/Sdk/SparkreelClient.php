@@ -29,9 +29,9 @@ class SparkreelClient extends Client
     public static function factory($config = array())
     {
         $default = array(
-            'base_url' => '{scheme}://{hostname}',
+            'base_url' => '{scheme}://{hostname}/v1',
             'scheme' => 'https',
-            'hostname' => 'www.sparkreel.com'
+            'hostname' => 'api.sparkreel.com'
         );
 
         $required = array('base_url');
@@ -46,21 +46,6 @@ class SparkreelClient extends Client
         return $client;
     }
 
-    /**
-     * Get an array containing all group videos under the "videos" key.
-     *
-     * @param int $id      The id of the group to get videos for
-     * @param int $page    The page to retrieve, first page is number 1
-     * @param int $perPage The number of videos per page, default is 20
-     *
-     * @return array|\Guzzle\Http\Message\Response
-     */
-    public function getGroupVideos($id, $page=1, $perPage=20)
-    {
-        $command = $this->getCommand('GetGroupVideos', array('id' => $id, 'page'=>$page, 'per_page'=>$perPage));
-
-        return $this->execute($command);
-    }
 
     /**
      * Post a video content to a non member submission anabled group.

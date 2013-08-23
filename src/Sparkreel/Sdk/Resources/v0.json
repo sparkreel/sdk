@@ -1,7 +1,7 @@
 {
     "name": "Sparkreel",
-    "apiVersion": "0",
-    "base_url": "https://www.sparkreel.com/api",
+    "apiVersion": "1.0",
+    "base_url": "https://api.sparkreel.com/v1",
     "description": "Sparkreel REST API client",
     "operations": {
         "GetGroupVideos": {
@@ -30,7 +30,35 @@
                     "description": "The number of videos per page",
                     "type": "integer",
                     "location": "query",
-                    "default": 20
+                    "default": 10
+                },
+                "moderation_status": {
+                    "description": "The modaration status",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["pending", "accepted", "rejected"],
+                    "default": "accepted"
+                },
+                "status": {
+                    "description": "The video processing status",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["pending", "processing", "ready", "error"],
+                    "default": "ready"
+                },
+                "sort_field": {
+                    "description": "The field to order videos by",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["date", "views"],
+                    "default": "date"
+                },
+                "sort_direction": {
+                    "description": "The the direction in which to order videis",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["asc", "desc"],
+                    "default": "asc"
                 }
             }
         },

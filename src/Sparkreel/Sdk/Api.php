@@ -48,17 +48,30 @@ class Api
      * @param int $groupId
      * @param int $limit
      * @param int $page
+     * @param string $moderationStatus
+     * @param string $status
+     * @param string $sortField
+     * @param string $sortDirection
      *
      * @throws ValidationException
      * @throws InvalidArgumentException if an invalid command is passed
      * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     * @return array
+     *
+     * @return array|\Guzzle\Http\Message\Response
      */
-    public function getGroupVideos($groupId, $limit = 10, $page = 1)
+    public function getGroupVideos($groupId, $limit = 10, $page = 1, $moderationStatus = "accepted",
+                                   $status = "ready", $sortField = "date", $sortDirection = "desc")
     {
-        $result = $this->client->getGroupVideos($groupId, $page, $limit);
+        $command = $this->client->getCommand('GetGroupVideos',
+            array('id' => $groupId,
+                  'page'=>$page,
+                  'per_page'=>$limit,
+                  'moderation_status'=>$moderationStatus,
+                  'status'=>$status,
+                  'sort_field'=>$sortField,
+                  'sort_direction'=>$sortDirection));
 
-        return $result;
+        return $this->client->execute($command);
     }
 
     /**
