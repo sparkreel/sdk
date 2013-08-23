@@ -10,9 +10,17 @@
 require_once realpath(dirname(__FILE__)."/../vendor/autoload.php");
 
 $serviceBuilder = new Guzzle\Service\Builder\ServiceBuilder();
-$serviceBuilder->set('test.sparkreel', \Sparkreel\Sdk\SparkreelClient::factory());
+$serviceBuilder->set('test.sparkreel', \Sparkreel\Sdk\SparkreelClient::factory(array(
+    "base_url"=>"https://www.sparkreel/api",
+    'ssl.certificate_authority' => 'system',
+    'curl.options' => array(
+        CURLOPT_SSL_VERIFYPEER => 0,
+        CURLOPT_SSL_VERIFYHOST => 0
+    ))));
 
 Guzzle\Tests\GuzzleTestCase::setServiceBuilder($serviceBuilder);
 
 //Set response mocks directory
 Guzzle\Tests\GuzzleTestCase::setMockBasePath(__DIR__ . '/mock');
+
+define("TEST_VIDEOS_PATH", __DIR__ . '/videos');

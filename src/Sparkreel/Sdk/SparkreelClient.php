@@ -61,4 +61,27 @@ class SparkreelClient extends Client
 
         return $this->execute($command);
     }
+
+    /**
+     * Post a video content to a non member submission anabled group.
+     *
+     * @param string $groupEmail The group's email address
+     * @param string $videoFile The video file in curl format. I.e. "@/filePath/file.avi"
+     * @param string $email The sender's email address
+     * @param string $title The content title
+     * @param string $description The content description
+     *
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function publishNonMemberContent($groupEmail, $videoFile, $email="", $title="", $description="")
+    {
+        $command = $this->getCommand('PublishNonMemberContent',
+            array('groupemail' => $groupEmail,
+                  'email'=>$email,
+                  'title'=>$title,
+                  'description'=>$description,
+                  'file'=>$videoFile));
+
+        return $this->execute($command);
+    }
 }

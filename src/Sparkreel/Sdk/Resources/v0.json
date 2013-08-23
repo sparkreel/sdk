@@ -33,6 +33,50 @@
                     "default": 20
                 }
             }
+        },
+        "PublishNonMemberContent": {
+            "httpMethod": "POST",
+            "uri": "content/post-nm",
+            "summary": "Posts a content as non member to a group",
+            "parameters": {
+                "format": {
+                    "description": "Specifies the format of the response, json or xml, right now only json",
+                    "type": "string",
+                    "location": "query",
+                    "default": "json"
+                },
+                "groupemail": {
+                    "description": "The email address of the group to post to",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "email": {
+                    "description": "The mail address of the content publisher",
+                    "type": "string",
+                    "location": "postField",
+                    "default": ""
+                },
+                "title": {
+                    "description": "The content's title",
+                    "type": "string",
+                    "location": "postField",
+                    "default": ""
+                },
+                "description": {
+                    "description": "The content's description",
+                    "type": "string",
+                    "location": "postField",
+                    "default": ""
+                },
+                "file": {
+                    "description": "The video file location",
+                    "type": "string",
+                    "location": "postFile",
+                    "required": true,
+                    "name": "file"
+                }
+            }
         }
     },
     "models": {

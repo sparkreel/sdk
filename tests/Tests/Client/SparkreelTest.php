@@ -29,4 +29,21 @@ class SparkreelTest extends GuzzleTestCase {
         $this->assertCount(20, $result['videos']);
     }
 
+    /**
+     * Test that we can submit videos to a group
+     */
+    public function testPostNmContentOk()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("postNMContentOK"));
+
+        $videoFile = "@".TEST_VIDEOS_PATH."/test1.mp4";
+
+        $res = $client->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
+
+        $this->assertArrayHasKey("error", $res);
+        $this->assertFalse($res["error"]);
+    }
+
 }
