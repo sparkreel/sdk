@@ -60,4 +60,31 @@ class Api
 
         return $result;
     }
+
+    /**
+     * Publish content as non member to the group specified by $groupEmail.
+     *
+     * @param string $groupEmail Email for the group to post to
+     * @param string $videoFile The video file path.
+     * @param string $email The Sender's email address.
+     * @param string $title The Content title
+     * @param string $description The Content's description
+     *
+     * @throws ValidationException
+     * @throws InvalidArgumentException if an invalid command is passed
+     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     *
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function publishNonMemberContent($groupEmail, $videoFile, $email="", $title="", $description="")
+    {
+        if (substr($videoFile, 0, 1) != "@") {
+            $videoFile = "@".$videoFile;
+        }
+
+        $result = $this->client->publishNonMemberContent($groupEmail, $videoFile, $email,
+                                                         $title, $description);
+
+        return $result;
+    }
 }

@@ -69,4 +69,36 @@ class ApiTest extends GuzzleTestCase {
         $api = new \Sparkreel\Sdk\Api(null, null, $client);
         $videos = $api->getGroupVideos(1, 20, "non integer page");
     }
+
+
+    public function testPublishNMContent()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("postNMContentOK"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $videoFile = TEST_VIDEOS_PATH."/test1.mp4";
+
+        $res = $api->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
+
+        $this->assertArrayHasKey("error", $res);
+        $this->assertFalse($res["error"]);
+    }
+
+    /**
+     * @expectedException \Guzzle\Common\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Unable to open fakeFile for reading
+     */
+    public function testPublishNMContentMissingFile()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("postNMContentOK"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $videoFile = "fakeFile";
+
+        $res = $api->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
+    }
 }
