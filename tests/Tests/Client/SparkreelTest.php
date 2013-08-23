@@ -12,24 +12,16 @@ namespace Sparkreel\Tests\Client;
 use Guzzle\Tests\GuzzleTestCase;
 use Sparkreel\Sdk\SparkreelClient;
 
-class SparkreelTest extends GuzzleTestCase {
-
-
+class SparkreelTest extends GuzzleTestCase
+{
     /**
-     * Test that we can submit videos to a group
+     * Test that we can construct a client
      */
-    public function testPostNmContentOk()
+    public function testFactory()
     {
-        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
-        $client = $this->getServiceBuilder()->get('test.sparkreel');
-        $this->setMockResponse($client, array("postNMContentOK"));
+        $client =  SparkreelClient::factory();
 
-        $videoFile = "@".TEST_VIDEOS_PATH."/test1.mp4";
-
-        $res = $client->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
-
-        $this->assertArrayHasKey("error", $res);
-        $this->assertFalse($res["error"]);
+        $this->assertEquals("https://api.sparkreel.com/v1", $client->getBaseUrl(true));
     }
 
 }

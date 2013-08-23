@@ -10,8 +10,8 @@ namespace Sparkreel\Tests\Api;
 use Guzzle\Tests\GuzzleTestCase;
 use Sparkreel\Sdk\SparkreelClient;
 
-class ApiTest extends GuzzleTestCase {
-
+class ApiTest extends GuzzleTestCase
+{
     /**
      * Test that that we can get group videos
      */
@@ -70,7 +70,6 @@ class ApiTest extends GuzzleTestCase {
         $videos = $api->getGroupVideos(1, 20, "non integer page");
     }
 
-
     public function testPublishNMContent()
     {
         /** @var  \Sparkreel\Sdk\SparkreelClient $client */
@@ -82,8 +81,8 @@ class ApiTest extends GuzzleTestCase {
 
         $res = $api->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
 
-        $this->assertArrayHasKey("error", $res);
-        $this->assertFalse($res["error"]);
+        $this->assertArrayHasKey("content_id", $res);
+        $this->assertEquals("393", $res["content_id"]);
     }
 
     /**

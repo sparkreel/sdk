@@ -45,9 +45,9 @@ class Api
      * the "videos" key will hold $limit number of videos for the requested
      * $page.
      *
-     * @param int $groupId
-     * @param int $limit
-     * @param int $page
+     * @param int    $groupId
+     * @param int    $limit
+     * @param int    $page
      * @param string $moderationStatus
      * @param string $status
      * @param string $sortField
@@ -77,10 +77,10 @@ class Api
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
-     * @param string $groupEmail Email for the group to post to
-     * @param string $videoFile The video file path.
-     * @param string $email The Sender's email address.
-     * @param string $title The Content title
+     * @param string $groupEmail  Email for the group to post to
+     * @param string $videoFile   The video file path.
+     * @param string $email       The Sender's email address.
+     * @param string $title       The Content title
      * @param string $description The Content's description
      *
      * @throws ValidationException
@@ -95,9 +95,13 @@ class Api
             $videoFile = "@".$videoFile;
         }
 
-        $result = $this->client->publishNonMemberContent($groupEmail, $videoFile, $email,
-                                                         $title, $description);
+        $command = $this->client->getCommand('PublishNonMemberContent',
+            array('group_id' => $groupEmail,
+                'user_email'=>$email,
+                'title'=>$title,
+                'description'=>$description,
+                'video_file'=>$videoFile));
 
-        return $result;
+        return $this->client->execute($command);
     }
 }

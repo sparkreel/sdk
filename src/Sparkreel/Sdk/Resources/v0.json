@@ -64,7 +64,7 @@
         },
         "PublishNonMemberContent": {
             "httpMethod": "POST",
-            "uri": "content/post-nm",
+            "uri": "video",
             "summary": "Posts a content as non member to a group",
             "parameters": {
                 "format": {
@@ -73,17 +73,17 @@
                     "location": "query",
                     "default": "json"
                 },
-                "groupemail": {
-                    "description": "The email address of the group to post to",
+                "group_id": {
+                    "description": "The email address or id of the group to post to",
                     "type": "string",
                     "location": "postField",
                     "required": true
                 },
-                "email": {
+                "user_email": {
                     "description": "The mail address of the content publisher",
                     "type": "string",
                     "location": "postField",
-                    "default": ""
+                    "required": true
                 },
                 "title": {
                     "description": "The content's title",
@@ -97,7 +97,7 @@
                     "location": "postField",
                     "default": ""
                 },
-                "file": {
+                "video_file": {
                     "description": "The video file location",
                     "type": "string",
                     "location": "postFile",
