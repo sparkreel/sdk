@@ -24,6 +24,49 @@ class ApiTest extends GuzzleTestCase {
         $api = new \Sparkreel\Sdk\Api(null, null, $client);
         $videos = $api->getGroupVideos(1, 20, 1);
 
-        $this->assertCount(20, $videos);
+        $this->assertArrayHasKey("videos", $videos);
+        $this->assertCount(20, $videos['videos']);
+    }
+
+    /**
+     * @expectedException \Guzzle\Service\Exception\ValidationException
+     * @expectedExceptionMessage Validation errors: [id] must be of type integer
+     */
+    public function testInvalidIdType()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("group1videos"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $videos = $api->getGroupVideos("this is not an integer", 20, 1);
+    }
+
+    /**
+     * @expectedException \Guzzle\Service\Exception\ValidationException
+     * @expectedExceptionMessage Validation errors: [per_page] must be of type integer
+     */
+    public function testInvalidLimitType()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("group1videos"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $videos = $api->getGroupVideos(1, "non integer limit", 1);
+    }
+
+    /**
+     * @expectedException \Guzzle\Service\Exception\ValidationException
+     * @expectedExceptionMessage Validation errors: [page] must be of type integer
+     */
+    public function testInvalidPageType()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("group1videos"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $videos = $api->getGroupVideos(1, 20, "non integer page");
     }
 }

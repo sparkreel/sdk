@@ -7,6 +7,10 @@
 
 namespace Sparkreel\Sdk;
 
+use Guzzle\Service\Exception\ValidationException;
+use Guzzle\Common\Exception\InvalidArgumentException;
+use Guzzle\Service\Exception\CommandTransferException;
+
 use Sparkreel\Sdk;
 
 class Api
@@ -37,21 +41,22 @@ class Api
     }
 
     /**
-     * Get an array containing all videos for a group.
+     * Get an array containing the response of the api. If successful,
+     * the "videos" key will hold $limit number of videos for the requested
+     * $page.
      *
-     * @param  int        $groupId
-     * @param  int        $limit
-     * @param  int        $page
-     * @return array|bool
+     * @param int $groupId
+     * @param int $limit
+     * @param int $page
+     *
+     * @throws ValidationException
+     * @throws InvalidArgumentException if an invalid command is passed
+     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     * @return array
      */
     public function getGroupVideos($groupId, $limit = 10, $page = 1)
     {
-        $result = false;
-
-        try {
-            $result = $this->client->getGroupVideos($groupId, $page, $limit);
-            $result = $result["videos"];
-        } catch (Exception $e) {}
+        $result = $this->client->getGroupVideos($groupId, $page, $limit);
 
         return $result;
     }
