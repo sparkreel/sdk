@@ -100,4 +100,16 @@ class ApiTest extends GuzzleTestCase
 
         $res = $api->publishNonMemberContent("test@sparkreel.com", $videoFile, "testersr@mailinator.com", "phpUnit");
     }
+
+    public function testGetVideo()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getVideoOK"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $video = $api->getVideo(1);
+
+        $this->assertEquals($video['id'], 1);
+    }
 }

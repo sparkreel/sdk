@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Mon, 26 Aug 2013 13:03:10 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.2
+
+{"id":"1","title":"German Ad","description":"A german tv ad for testing the site.","aspect_ratio":"16:9","width":640,"height":360,"html":"<iframe scrolling=\"no\" style=\"overflow: hidden; border:0px;\" allowfullscreen webkitallowfullscreen=\"true\" src=\"\/\/api.sparkreel\/embed\/test\/1\/640\/360\" width=\"640\" height=\"360\"><\/iframe>","thumbnail":{"url":"\/\/www.dev.sparkreel.com\/group\/get-video-thumb\/id\/1"}}

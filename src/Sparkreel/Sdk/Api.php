@@ -53,11 +53,12 @@ class Api
      * @param string $sortField
      * @param string $sortDirection
      *
+     * @return array|\Guzzle\Http\Message\Response
+     *
      * @throws ValidationException
      * @throws InvalidArgumentException if an invalid command is passed
      * @throws CommandTransferException if an exception is encountered when transferring multiple commands
      *
-     * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupVideos($groupId, $limit = 10, $page = 1, $moderationStatus = "accepted",
                                    $status = "ready", $sortField = "date", $sortDirection = "desc")
@@ -70,6 +71,34 @@ class Api
                   'status'=>$status,
                   'sort_field'=>$sortField,
                   'sort_direction'=>$sortDirection));
+
+        return $this->client->execute($command);
+    }
+
+    /**
+     * Get a video's data, including embed code.
+     *
+     * @param int $id
+     * @param int $width
+     * @param int $height
+     *
+     * @return array|\Guzzle\Http\Message\Response
+     *
+     * @throws ValidationException
+     * @throws InvalidArgumentException if an invalid command is passed
+     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     *
+     */
+    public function getVideo($id, $width=null, $height=null)
+    {
+        $commandParams = array("id"=>$id);
+        if (!empty($width)) {
+            $commandParams["width"] = $width;
+        } else if (!empty($height)) {
+            $commandParams["height"] = $height;
+        }
+
+        $command = $this->client->getCommand('GetVideo', $commandParams);
 
         return $this->client->execute($command);
     }
