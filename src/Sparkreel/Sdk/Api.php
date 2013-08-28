@@ -45,7 +45,6 @@ class Api
      * the "videos" key will hold $limit number of videos for the requested
      * $page.
      *
-     * @param int    $groupId
      * @param int    $limit
      * @param int    $page
      * @param string $moderationStatus
@@ -60,12 +59,11 @@ class Api
      * @throws CommandTransferException if an exception is encountered when transferring multiple commands
      *
      */
-    public function getGroupVideos($groupId, $limit = 10, $page = 1, $moderationStatus = "accepted",
+    public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
                                    $status = "ready", $sortField = "date", $sortDirection = "desc")
     {
         $command = $this->client->getCommand('GetGroupVideos',
-            array('id' => $groupId,
-                  'page'=>$page,
+            array('page'=>$page,
                   'per_page'=>$limit,
                   'moderation_status'=>$moderationStatus,
                   'status'=>$status,
@@ -106,7 +104,6 @@ class Api
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
-     * @param string $groupEmail  Email for the group to post to
      * @param string $videoFile   The video file path.
      * @param string $email       The Sender's email address.
      * @param string $title       The Content title
@@ -118,15 +115,14 @@ class Api
      *
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishNonMemberContent($groupEmail, $videoFile, $email="", $title="", $description="")
+    public function publishNonMemberContent($videoFile, $email="", $title="", $description="")
     {
         if (substr($videoFile, 0, 1) != "@") {
             $videoFile = "@".$videoFile;
         }
 
         $command = $this->client->getCommand('PublishNonMemberContent',
-            array('group_id' => $groupEmail,
-                'user_email'=>$email,
+            array('user_email'=>$email,
                 'title'=>$title,
                 'description'=>$description,
                 'video_file'=>$videoFile));

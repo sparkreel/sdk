@@ -6,14 +6,9 @@
     "operations": {
         "GetGroupVideos": {
             "httpMethod": "GET",
-            "uri": "group/{id}/videos",
-            "summary": "Returns the 20 most recent mentions for the authenticating user.",
+            "uri": "videos",
+            "summary": "Returns videos for the group associated with the api key.",
             "parameters": {
-                "id": {
-                    "description": "The id of the group to get videos from",
-                    "type": "integer",
-                    "location": "uri"
-                },
                 "format": {
                     "description": "Specifies the format of the response, json or xml, right now only json",
                     "type": "string",
@@ -87,19 +82,13 @@
         "PublishNonMemberContent": {
             "httpMethod": "POST",
             "uri": "video",
-            "summary": "Posts a content as non member to a group",
+            "summary": "Posts a content as non member to the group associated with the api key.",
             "parameters": {
                 "format": {
                     "description": "Specifies the format of the response, json or xml, right now only json",
                     "type": "string",
                     "location": "query",
                     "default": "json"
-                },
-                "group_id": {
-                    "description": "The email address or id of the group to post to",
-                    "type": "string",
-                    "location": "postField",
-                    "required": true
                 },
                 "user_email": {
                     "description": "The mail address of the content publisher",

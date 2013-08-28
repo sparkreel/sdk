@@ -34,10 +34,13 @@ class SparkreelClient extends Client
             'hostname' => 'api.sparkreel.com'
         );
 
-        $required = array('base_url');
+        $required = array('base_url', 'api_key');
         $config = Collection::fromConfig($config, $default, $required);
 
         $client = new self($config->get('base_url'), $config);
+        
+        // set X-API-Key header
+        $client->setDefaultOption('headers/X-API-Key', $config->get('api_key'));
 
         // Attach a service description to the client
         $description = ServiceDescription::factory(__DIR__ . '/Resources/v0.json');

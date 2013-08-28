@@ -19,8 +19,9 @@ class SparkreelTest extends GuzzleTestCase
      */
     public function testFactory()
     {
-        $client =  SparkreelClient::factory();
-
+        $client =  SparkreelClient::factory(array(
+            'api_key' => 'foo'
+        ));
         $this->assertEquals("https://api.sparkreel.com/v1", $client->getBaseUrl(true));
     }
 

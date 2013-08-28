@@ -12,6 +12,7 @@ require_once realpath(dirname(__FILE__)."/../vendor/autoload.php");
 $serviceBuilder = new Guzzle\Service\Builder\ServiceBuilder();
 $serviceBuilder->set('test.sparkreel', \Sparkreel\Sdk\SparkreelClient::factory(array(
     "base_url"=>"https://api.sparkreel/v1",
+    "api_key" => "foo",
     'ssl.certificate_authority' => 'system',
     'curl.options' => array(
         CURLOPT_SSL_VERIFYPEER => 0,
