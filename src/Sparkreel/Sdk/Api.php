@@ -29,7 +29,7 @@ class Api
      * @param array                  $options
      * @param \Guzzle\Service\Client $client
      */
-    public function __construct($baseUrl = "https://www.sparkreel.com/api", $options=array(), \Guzzle\Service\Client &$client = null)
+    public function __construct($baseUrl = "https://api.sparkreel.com/v1", $options=array(), \Guzzle\Service\Client &$client = null)
     {
         if ($client === null) {
             $options['base_url'] = $baseUrl;
@@ -126,6 +126,30 @@ class Api
                 'title'=>$title,
                 'description'=>$description,
                 'video_file'=>$videoFile));
+
+        return $this->client->execute($command);
+    }
+    
+    /**
+     * 
+     * @param string $title
+     * @param string $description
+     * @param array $config
+     * 
+     * @throws ValidationException
+     * @throws InvalidArgumentException if an invalid command is passed
+     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     * 
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function updateGroup($title, $description, $config = array())
+    {
+      $command = $this->client->getCommand('UpdateGroup',
+            array(
+                'title' => $title,
+                'description' => $description,
+                'config' => $config
+            ));
 
         return $this->client->execute($command);
     }

@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.1
+Date: Fri, 30 Aug 2013 17:11:03 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.6-1ubuntu1.3
+
+{"group":{"id":"61","title":"Group Title","description":"Group Description","privacy":"public","sumbission":"automatic","email":"dbowen","avatar":"\/img\/group-avatar.png","deleted":"0","datedeleted":null,"date_created":"2013-04-10 10:31:11","nonmeber_submission":true,"Category_id":null,"challengemode":false,"challenge_mail":null,"challenge_text":null,"challenge_mail_subject":null,"config":{"watermark_url":"http:\/\/s3\/watermark.png","endframe_desktop_html":"<h1>endframe desktop<\/h1>","endframe_mobile_html":"<h1>endframe mobile<\/h1>","email_domain":"careerbuilder.com"}}}

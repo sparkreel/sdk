@@ -98,4 +98,22 @@ class ApiTest extends GuzzleTestCase
 
         $this->assertEquals($video['id'], 1);
     }
+    
+    public function testUpdateGroup()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("updateGroup"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $group = $api->updateGroup('Group Title', 'Group Description', array(
+            'watermark_url' => 'http://s3/watermark.png',
+            'endframe_desktop_html' => '<h1>Endframe desktop</h1>',
+            'endframe_mobile_html' => '<h1>Endframe mobile</h1>',
+            'email_domain' => 'foobar.com'
+        ));
+
+        $this->assertEquals($group['group']['title'], 'Group Title');
+        $this->assertEquals($group['group']['config']['watermark_url'], 'http://s3/watermark.png');
+    }
 }

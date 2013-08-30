@@ -116,6 +116,51 @@
                     "name": "file"
                 }
             }
+        },
+        "UpdateGroup": {
+            "httpMethod": "PUT",
+            "uri": "group",
+            "summary": "Updates settings for your group",
+            "parameters": {
+                "title": {
+                    "description": "The title of your group",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "description": {
+                    "description": "The description of your group",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "config": {
+                    "description": "Additional settings for your group",
+                    "type": "object",
+                    "location": "postField",
+                    
+                    "parameters": {
+                      "watermark_url": {
+                        "description": "The http(s) url of the watermark to use on videos",
+                        "type": "string",
+                        "location": "postField"
+                      },
+                      "endframe_desktop_html": {
+                        "description": "HTML to use for the desktop endframe",
+                        "type": "string",
+                        "location": "postField"
+                      },
+                      "endframe_mobile_html": {
+                        "description": "HTML to use for the mobile endframe",
+                        "type": "string",
+                        "location": "postField"
+                      },
+                      "email_domain": {
+                        "description": "Domain to use for sending videos to SparkReel via e-mail",
+                        "type": "string",
+                        "location": "postField"
+                      }
+                    }
+                }
+            }
         }
     },
     "models": {
