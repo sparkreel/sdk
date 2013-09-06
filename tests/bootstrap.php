@@ -10,9 +10,23 @@
 require_once realpath(dirname(__FILE__)."/../vendor/autoload.php");
 
 $serviceBuilder = new Guzzle\Service\Builder\ServiceBuilder();
+
+// regular api client
 $serviceBuilder->set('test.sparkreel', \Sparkreel\Sdk\SparkreelClient::factory(array(
     "base_url"=>"https://api.sparkreel/v1",
     "api_key" => "foo",
+    'ssl.certificate_authority' => 'system',
+    'curl.options' => array(
+        CURLOPT_SSL_VERIFYPEER => 0,
+        CURLOPT_SSL_VERIFYHOST => 0
+    ))));
+
+// OAuth2 client
+$serviceBuilder->set('test.oauth', \Sparkreel\Sdk\OAuth2\Client::factory(array(
+    'scheme'        => 'http',
+    'hostname'      => 'www.dev.sparkreel.com',
+    'client_id'     => 'demoreel',
+    'client_secret' => 'demo_secret',
     'ssl.certificate_authority' => 'system',
     'curl.options' => array(
         CURLOPT_SSL_VERIFYPEER => 0,

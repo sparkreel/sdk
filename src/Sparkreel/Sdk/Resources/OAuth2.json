@@ -1,0 +1,26 @@
+{
+    "name": "Sparkreel OAuth2",
+    "apiVersion": "0.1",
+    "base_url": "https://www.sparkreel.com/oauth",
+    "description": "Sparkreel OAuth2 API client",
+    "operations": {
+        "RequestAccessToken": {
+            "httpMethod": "POST",
+            "uri": "request-token",
+            "summary": "Exchanges given authorization code for access token.",
+            "parameters": {
+                "code": {
+                    "description": "The authorization code returned to your client app after a user has granted authorization",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "grant_type": {
+                    "description": "The grant type you are requesting",
+                    "type": "string",
+                    "location": "postField",
+                    "default": "authorization_code"
+                }
+            }
+        }
+    }
+}

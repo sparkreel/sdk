@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.1
+Date:	Fri, 06 Sep 2013 15:42:00 GMT
+Content-Type:	application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.6-1ubuntu1.3
+
+{"access_token":"3e08ee5560310ce1d0681403ad2c3d8c6b91faff","expires_in":null,"token_type":"bearer","scope":null}

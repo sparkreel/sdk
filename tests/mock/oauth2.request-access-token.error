@@ -1,0 +1,9 @@
+HTTP/1.1 400 Bad Request
+Server: nginx/1.2.1
+Date:	Fri, 06 Sep 2013 15:42:00 GMT
+Content-Type:	application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.6-1ubuntu1.3
+
+{"error":"invalid_grant","error_description":"Authorization code doesn't exist or is invalid for the client"}
