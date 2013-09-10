@@ -116,4 +116,16 @@ class ApiTest extends GuzzleTestCase
         $this->assertEquals($group['group']['title'], 'Group Title');
         $this->assertEquals($group['group']['config']['watermark_url'], 'http://s3/watermark.png');
     }
+    
+    public function testGetGroupInfo()
+    {
+      $client = $this->getServiceBuilder()->get('test.sparkreel');
+      $this->setMockResponse($client, array("getGroupInfo"));
+
+      $api = new \Sparkreel\Sdk\Api(null, null, $client);
+      $group = $api->getGroupInfo();
+
+      $this->assertArrayHasKey('group', $group);
+      $this->assertEquals($group['group']['title'], 'Group Title');
+    }
 }

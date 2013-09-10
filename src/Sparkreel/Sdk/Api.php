@@ -153,4 +153,18 @@ class Api
 
         return $this->client->execute($command);
     }
+    
+    /**
+     * 
+     * @throws ValidationException
+     * @throws InvalidArgumentException if an invalid command is passed
+     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     * 
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function getGroupInfo()
+    {
+      $command = $this->client->getCommand('GetGroupInfo');
+      return $this->client->execute($command);
+    }
 }
