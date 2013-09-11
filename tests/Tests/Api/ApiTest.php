@@ -129,6 +129,17 @@ class ApiTest extends GuzzleTestCase
       $this->assertEquals($group['group']['title'], 'Group Title');
     }
     
+    public function testUpdateVideo()
+    {
+      $client = $this->getServiceBuilder()->get('test.sparkreel');
+      $this->setMockResponse($client, array("updateVideo"));
+
+      $api = new \Sparkreel\Sdk\Api(null, null, $client);
+      $response = $api->updateVideo(410, array('status' => 'rejected'));
+
+      $this->assertTrue('rejected' == $response['video']['status']);
+    }
+    
     public function testDeleteVideo()
     {
       $client = $this->getServiceBuilder()->get('test.sparkreel');

@@ -173,9 +173,38 @@
             "summary": "Returns videos for the group associated with the api key.",
             "parameters": {
                 "id": {
-                    "description": "deletes a video from the reel",
+                    "description": "ID of the video you want to delete",
+                    "type": "integer",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "UpdateVideo": {
+            "httpMethod": "PUT",
+            "uri": "videos/{id}",
+            "summary": "Updates video properties",
+            "parameters": {
+                "id": {
+                    "description": "ID of the video you want to update",
                     "type": "integer",
                     "location": "uri"
+                },
+                "title": {
+                    "description": "Title of the video",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "description": {
+                    "description": "Description of the video",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "status": {
+                    "description": "Moderation status of the video",
+                    "type": "string",
+                    "enum": ["pending", "accepted", "rejected"],
+                    "location": "postField"
                 }
             }
         }

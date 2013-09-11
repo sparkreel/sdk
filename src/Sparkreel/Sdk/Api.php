@@ -51,13 +51,7 @@ class Api
      * @param string $status
      * @param string $sortField
      * @param string $sortDirection
-     *
      * @return array|\Guzzle\Http\Message\Response
-     *
-     * @throws ValidationException
-     * @throws InvalidArgumentException if an invalid command is passed
-     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     *
      */
     public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
                                    $status = "ready", $sortField = "date", $sortDirection = "desc")
@@ -79,13 +73,7 @@ class Api
      * @param int $id
      * @param int $width
      * @param int $height
-     *
      * @return array|\Guzzle\Http\Message\Response
-     *
-     * @throws ValidationException
-     * @throws InvalidArgumentException if an invalid command is passed
-     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     *
      */
     public function getVideo($id, $width=null, $height=null)
     {
@@ -108,11 +96,6 @@ class Api
      * @param string $email       The Sender's email address.
      * @param string $title       The Content title
      * @param string $description The Content's description
-     *
-     * @throws ValidationException
-     * @throws InvalidArgumentException if an invalid command is passed
-     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     *
      * @return array|\Guzzle\Http\Message\Response
      */
     public function publishNonMemberContent($videoFile, $email="", $title="", $description="")
@@ -135,11 +118,6 @@ class Api
      * @param string $title
      * @param string $description
      * @param array $config
-     * 
-     * @throws ValidationException
-     * @throws InvalidArgumentException if an invalid command is passed
-     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     * 
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateGroup($title, $description, $config = array())
@@ -155,10 +133,7 @@ class Api
     }
     
     /**
-     * 
-     * @throws ValidationException
-     * @throws InvalidArgumentException if an invalid command is passed
-     * @throws CommandTransferException if an exception is encountered when transferring multiple commands
+     * Get infor for group associated with API key
      * 
      * @return array|\Guzzle\Http\Message\Response
      */
@@ -168,6 +143,48 @@ class Api
       return $this->client->execute($command);
     }
     
+    /**
+     * 
+     * @param int $id
+     * @param array $params
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function updateVideo($id, array $params = array())
+    {
+        $combinedParams = array_merge(array('id' => $id), $params);
+        $command = $this->client->getCommand('UpdateVideo', $combinedParams);
+
+        return $this->client->execute($command);
+    }
+    
+    /**
+     * Convenience method for moderating a video as accepted
+     * 
+     * Simply proxies updateVideo()
+     * 
+     * @param integer $id
+     * @return array|\Guzzle\Http\Message\Response
+     * @see self::updateVideo()
+     */
+    public function acceptVideo($id)
+    {
+      return $this->updateVideo($id, array('status' => 'accepted'));
+    }
+    
+    /**
+     * Convenience method for moderating a video as rejected
+     * 
+     * Simply proxies updateVideo()
+     * 
+     * @param integer $id
+     * @return array|\Guzzle\Http\Message\Response
+     * @see self::updateVideo()
+     */
+    public function rejectVideo($id)
+    {
+      return $this->updateVideo($id, array('status' => 'rejected'));
+    }
+
     /**
      * Delete a video from the group
      * 
