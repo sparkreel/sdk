@@ -167,4 +167,19 @@ class Api
       $command = $this->client->getCommand('GetGroupInfo');
       return $this->client->execute($command);
     }
+    
+    /**
+     * Delete a video from the group
+     * 
+     * @param int $id
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function deleteVideo($id)
+    {
+        $command = $this->client->getCommand('DeleteVideo', array(
+          'id' => $id
+        ));
+
+        return $this->client->execute($command);
+    }
 }

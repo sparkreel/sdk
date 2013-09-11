@@ -128,4 +128,15 @@ class ApiTest extends GuzzleTestCase
       $this->assertArrayHasKey('group', $group);
       $this->assertEquals($group['group']['title'], 'Group Title');
     }
+    
+    public function testDeleteVideo()
+    {
+      $client = $this->getServiceBuilder()->get('test.sparkreel');
+      $this->setMockResponse($client, array("deleteVideo"));
+
+      $api = new \Sparkreel\Sdk\Api(null, null, $client);
+      $response = $api->deleteVideo(410);
+
+      $this->assertTrue($response['success']);
+    }
 }

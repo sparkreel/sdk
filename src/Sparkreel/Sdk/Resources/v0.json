@@ -166,6 +166,18 @@
             "httpMethod": "GET",
             "uri": "group",
             "summary": "Returns info for the group associated with the api key."
+        },
+        "DeleteVideo": {
+            "httpMethod": "DELETE",
+            "uri": "videos/{id}",
+            "summary": "Returns videos for the group associated with the api key.",
+            "parameters": {
+                "id": {
+                    "description": "deletes a video from the reel",
+                    "type": "integer",
+                    "location": "uri"
+                }
+            }
         }
     },
     "models": {

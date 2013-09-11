@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Mon, 26 Aug 2013 13:03:10 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.2
+
+{"success": true}
