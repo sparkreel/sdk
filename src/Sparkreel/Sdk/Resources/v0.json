@@ -207,6 +207,31 @@
                     "location": "postField"
                 }
             }
+        },
+        "GetVideoComments": {
+            "httpMethod": "GET",
+            "uri": "videos/{id}/comments",
+            "summary": "Get comments for a specific video",
+            "parameters": {
+                "id": {
+                  "description": "ID of the video you want to get comments for",
+                  "type": "integer",
+                  "location": "uri",
+                  "required": true
+                },
+                "page": {
+                    "description": "The requested page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 1
+                },
+                "per_page": {
+                    "description": "The number of comments per page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 10
+                }
+            }
         }
     },
     "models": {

@@ -199,4 +199,31 @@ class Api
 
         return $this->client->execute($command);
     }
+    
+    /**
+     * Get comments for a video
+     * 
+     * @param int $videoId
+     * @param int $page
+     * @param int $perPage
+     * @return @return array|\Guzzle\Http\Message\Response
+     */
+    public function getVideoComments($videoId, $page = null, $perPage = null)
+    {
+        $commandParams = array(
+            'id' => $videoId
+        );
+
+        if (null !== $page) {
+            $commandParams['page'] = $page;
+        }
+
+        if (null !== $perPage) {
+            $commandParams['per_page'] = $perPage;
+        }
+        
+        $command = $this->client->getCommand('GetVideoComments', $commandParams);
+
+        return $this->client->execute($command);
+    }
 }

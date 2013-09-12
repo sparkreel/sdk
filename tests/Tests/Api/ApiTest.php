@@ -150,4 +150,15 @@ class ApiTest extends GuzzleTestCase
 
       $this->assertTrue($response['success']);
     }
+    
+    public function testGetVideoComments()
+    {
+      $client = $this->getServiceBuilder()->get('test.sparkreel');
+      $this->setMockResponse($client, array("getVideoComments"));
+
+      $api = new \Sparkreel\Sdk\Api(null, null, $client);
+      $response = $api->getVideoComments(387);
+
+      $this->assertArrayHasKey('comments', $response);
+    }
 }
