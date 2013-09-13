@@ -1,0 +1,9 @@
+HTTP/1.1 201 Created
+Server: nginx/1.2.6 (Ubuntu)
+Date: Fri, 23 Aug 2013 21:01:11 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.2
+
+{"content_id":"393"}

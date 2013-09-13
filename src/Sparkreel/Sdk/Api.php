@@ -114,6 +114,52 @@ class Api
     }
     
     /**
+     * Publish a video using an uploaded file (SparkreelVideo)
+     * 
+     * @param string $oauthAccessToken
+     * @param string $title
+     * @param string $description
+     * @param string $videoFile
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function publishMemberContentFile($oauthAccessToken, $title, $description, $videoFile)
+    {
+      if (substr($videoFile, 0, 1) != "@") {
+          $videoFile = "@" . $videoFile;
+      }
+
+      $command = $this->client->getCommand('PublishMemberContent', array(
+          'oauth_access_token' => $oauthAccessToken,
+          'title'              => $title,
+          'description'        => $description,
+          'video_file'         => $videoFile
+      ));
+
+      return $this->client->execute($command);
+    }
+    
+    /**
+     * Publish a 3rd-party video
+     * 
+     * @param string $oauthAccessToken
+     * @param string $title
+     * @param string $description
+     * @param string $externalUrl
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function publishMemberContentExternal($oauthAccessToken, $title, $description, $externalUrl)
+    {
+      $command = $this->client->getCommand('PublishMemberContent', array(
+          'oauth_access_token' => $oauthAccessToken,
+          'title'              => $title,
+          'description'        => $description,
+          'external_url'       => $externalUrl
+      ));
+
+      return $this->client->execute($command);
+    }
+
+    /**
      * 
      * @param string $title
      * @param string $description
@@ -206,7 +252,7 @@ class Api
      * @param int $videoId
      * @param int $page
      * @param int $perPage
-     * @return @return array|\Guzzle\Http\Message\Response
+     * @return array|\Guzzle\Http\Message\Response
      */
     public function getVideoComments($videoId, $page = null, $perPage = null)
     {
@@ -225,5 +271,29 @@ class Api
         $command = $this->client->getCommand('GetVideoComments', $commandParams);
 
         return $this->client->execute($command);
+    }
+    
+    /**
+     * 
+     * @param int $videoId
+     * @param string $oauthAccessToken
+     * @param string $commentText
+     * @param int $replyTo
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function postComment($videoId, $oauthAccessToken, $commentText, $replyTo = null)
+    {
+      $params = array(
+          'id' => $videoId,
+          'oauth_access_token' => $oauthAccessToken,
+          'comment_text' => $commentText
+      );
+      
+      if (is_numeric($replyTo)) {
+        $params['reply_to'] = $replyTo;
+      }
+      
+      $command = $this->client->getCommand('PostComment', $params);
+      return $this->client->execute($command);
     }
 }

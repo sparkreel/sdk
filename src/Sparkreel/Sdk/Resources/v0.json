@@ -84,12 +84,6 @@
             "uri": "video",
             "summary": "Posts a content as non member to the group associated with the api key.",
             "parameters": {
-                "format": {
-                    "description": "Specifies the format of the response, json or xml, right now only json",
-                    "type": "string",
-                    "location": "query",
-                    "default": "json"
-                },
                 "user_email": {
                     "description": "The mail address of the content publisher",
                     "type": "string",
@@ -109,11 +103,55 @@
                     "default": ""
                 },
                 "video_file": {
-                    "description": "The video file location",
+                    "description": "The video file location, if you are posting a SparkReel video",
                     "type": "string",
                     "location": "postFile",
                     "required": true,
                     "name": "file"
+                },
+                "external_url": {
+                    "description": "The URL to the 3rd-party video, if you are posting a 3rd party video",
+                    "type": "string",
+                    "location": "postField",
+                    "required": false
+                }
+            }
+        },
+        "PublishMemberContent": {
+            "httpMethod": "POST",
+            "uri": "video",
+            "summary": "Posts a content as member to the group associated with the api key.",
+            "parameters": {
+                "oauth_access_token": {
+                    "description": "OAuth access token for the user you are posting on behalf of",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "title": {
+                    "description": "The content's title",
+                    "type": "string",
+                    "location": "postField",
+                    "default": ""
+                },
+                "description": {
+                    "description": "The content's description",
+                    "type": "string",
+                    "location": "postField",
+                    "default": ""
+                },
+                "video_file": {
+                    "description": "The video file location, if you are posting a SparkReel video",
+                    "type": "string",
+                    "location": "postFile",
+                    "required": false,
+                    "name": "file"
+                },
+                "external_url": {
+                    "description": "The URL to the 3rd-party video, if you are posting a 3rd party video",
+                    "type": "string",
+                    "location": "postField",
+                    "required": false
                 }
             }
         },
@@ -230,6 +268,36 @@
                     "type": "integer",
                     "location": "query",
                     "default": 10
+                }
+            }
+        },
+        "PostComment": {
+            "httpMethod": "POST",
+            "uri": "videos/{id}/comments",
+            "summary": "Post a comment on behalf of a user",
+            "parameters": {
+                "id": {
+                  "description": "ID of the video you want to submit the comment for",
+                  "type": "integer",
+                  "location": "uri",
+                  "required": true
+                },
+                "oauth_access_token": {
+                    "description": "OAuth access token for the user you are posting on behalf of",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "comment_text": {
+                    "description": "Text of the comment",
+                    "type": "string",
+                    "location": "postField",
+                    "required": true
+                },
+                "reply_to": {
+                    "description": "ID of the comment you are replying to, if any",
+                    "type": "integer",
+                    "location": "postField"
                 }
             }
         }

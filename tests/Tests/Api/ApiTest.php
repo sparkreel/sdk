@@ -161,4 +161,32 @@ class ApiTest extends GuzzleTestCase
 
       $this->assertArrayHasKey('comments', $response);
     }
+    
+    public function testPublishMemberContentExternal()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("publishVideo"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->publishMemberContentExternal('c2ab9c1f4ac8a2a99e45f70e1e19a4ada4d38436', 'title', 'desc', 'http://www.youtube.com/watch?v=mAtOV_cp2b8');
+
+        $this->assertArrayHasKey("content_id", $res);
+        $this->assertEquals("393", $res["content_id"]);
+    }
+    
+    public function testPostComment()
+    {
+      /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+      $client = $this->getServiceBuilder()->get('test.sparkreel');
+      $this->setMockResponse($client, array("postComment"));
+
+      $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+      $res = $api->postComment(387, 'c2ab9c1f4ac8a2a99e45f70e1e19a4ada4d38436', 'test comment');
+
+      $this->assertArrayHasKey("comment", $res);
+      $this->assertEquals("test comment", $res["comment"]["text"]);
+    }
 }
