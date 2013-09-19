@@ -45,7 +45,7 @@
                     "description": "The field to order videos by",
                     "type": "string",
                     "location": "query",
-                    "enum": ["date", "views"],
+                    "enum": ["date", "views", "title"],
                     "default": "date"
                 },
                 "sort_direction": {
