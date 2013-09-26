@@ -220,7 +220,7 @@
         },
         "UpdateVideo": {
             "httpMethod": "PUT",
-            "uri": "videos/{id}",
+            "uri": "video/{id}",
             "summary": "Updates video properties",
             "parameters": {
                 "id": {
