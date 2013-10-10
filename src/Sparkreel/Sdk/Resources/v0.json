@@ -106,7 +106,7 @@
                     "description": "The video file location, if you are posting a SparkReel video",
                     "type": "string",
                     "location": "postFile",
-                    "required": true,
+                    "required": false,
                     "name": "file"
                 },
                 "external_url": {

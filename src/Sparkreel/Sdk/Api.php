@@ -112,6 +112,26 @@ class Api
 
         return $this->client->execute($command);
     }
+
+    /**
+     * Publish content as non member to the group specified by $groupEmail.
+     *
+     * @param string $externalUrl   The video url.
+     * @param string $email       The Sender's email address.
+     * @param string $title       The Content title
+     * @param string $description The Content's description
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function publishNonMemberContentExternal($externalUrl, $email="", $title="", $description="")
+    {
+        $command = $this->client->getCommand('PublishNonMemberContent',
+            array('user_email'=>$email,
+                'title'=>$title,
+                'description'=>$description,
+                'external_url'=>$externalUrl));
+
+        return $this->client->execute($command);
+    }
     
     /**
      * Publish a video using an uploaded file (SparkreelVideo)
