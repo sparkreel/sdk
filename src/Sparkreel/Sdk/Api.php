@@ -316,4 +316,17 @@ class Api
       $command = $this->client->getCommand('PostComment', $params);
       return $this->client->execute($command);
     }
+
+    /**
+     * Get info for an external resource url
+     *
+     * @param $url
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function getExternalProviderInfo($url)
+    {
+        $params = array("url"=>$url);
+        $command = $this->client->getCommand('GetExternalProviderInfo', $params);
+        return $this->client->execute($command);
+    }
 }

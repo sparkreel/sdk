@@ -300,6 +300,19 @@
                     "location": "postField"
                 }
             }
+        },
+        "GetExternalProviderInfo": {
+            "httpMethod": "GET",
+            "uri": "external-provider/info",
+            "summary": "Returns info for the url set.",
+            "parameters": {
+                "url": {
+                    "description": "The url to get info for",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
         }
     },
     "models": {
