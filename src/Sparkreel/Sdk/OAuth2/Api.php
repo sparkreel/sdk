@@ -52,4 +52,20 @@ class Api
 
       return $this->client->execute($command);
     }
+
+    /**
+     * Generates a login url
+     *
+     * @return string
+     */
+    public function getLoginUrl()
+    {
+        $url = sprintf("%s/authorize?response_type=code&client_id=%s&state=%s",
+            $this->client->getBaseUrl(),
+            $this->client->getConfig('client_id'),
+            md5(uniqid())
+        );
+
+        return $url;
+    }
 }
