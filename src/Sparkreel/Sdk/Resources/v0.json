@@ -207,7 +207,7 @@
         },
         "DeleteVideo": {
             "httpMethod": "DELETE",
-            "uri": "videos/{id}",
+            "uri": "video/{id}",
             "summary": "Returns videos for the group associated with the api key.",
             "parameters": {
                 "id": {
@@ -248,7 +248,7 @@
         },
         "GetVideoComments": {
             "httpMethod": "GET",
-            "uri": "videos/{id}/comments",
+            "uri": "video/{id}/comments",
             "summary": "Get comments for a specific video",
             "parameters": {
                 "id": {
@@ -273,7 +273,7 @@
         },
         "PostComment": {
             "httpMethod": "POST",
-            "uri": "videos/{id}/comments",
+            "uri": "video/{id}/comments",
             "summary": "Post a comment on behalf of a user",
             "parameters": {
                 "id": {
