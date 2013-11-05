@@ -45,16 +45,18 @@ class Api
      * the "videos" key will hold $limit number of videos for the requested
      * $page.
      *
-     * @param int    $limit
-     * @param int    $page
+     * @param int $limit
+     * @param int $page
      * @param string $moderationStatus
      * @param string $status
      * @param string $sortField
      * @param string $sortDirection
+     * @param array $ids Id's to filter videos to
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
-                                   $status = "ready", $sortField = "date", $sortDirection = "desc")
+                                   $status = "ready", $sortField = "date",
+                                   $sortDirection = "desc", $ids = array())
     {
         $command = $this->client->getCommand('GetGroupVideos',
             array('page'=>$page,
@@ -62,7 +64,8 @@ class Api
                   'moderation_status'=>$moderationStatus,
                   'status'=>$status,
                   'sort_field'=>$sortField,
-                  'sort_direction'=>$sortDirection));
+                  'sort_direction'=>$sortDirection,
+                  'ids'=>implode(",", $ids)));
 
         return $this->client->execute($command);
     }

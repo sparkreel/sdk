@@ -54,6 +54,12 @@
                     "location": "query",
                     "enum": ["asc", "desc"],
                     "default": "asc"
+                },
+                "ids": {
+                    "description": "The ids of the videos you want returned.",
+                    "type": "string",
+                    "location": "query",
+                    "default": ""
                 }
             }
         },
