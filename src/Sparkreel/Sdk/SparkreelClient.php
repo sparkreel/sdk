@@ -38,7 +38,7 @@ class SparkreelClient extends Client
         $config = Collection::fromConfig($config, $default, $required);
 
         $client = new self($config->get('base_url'), $config);
-        
+
         // set X-API-Key header
         $client->setDefaultOption('headers/X-API-Key', $config->get('api_key'));
 

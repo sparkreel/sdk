@@ -319,6 +319,32 @@
                     "required": true
                 }
             }
+        },
+        "GetUser": {
+            "httpMethod": "GET",
+            "uri": "user/{id}",
+            "summary": "Get a users data",
+            "parameters": {
+                "id": {
+                    "description": "ID of the user to data for",
+                    "type": "integer",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "GetCurrentUser": {
+            "httpMethod": "GET",
+            "uri": "user",
+            "summary": "Get the currently logged in user data",
+            "parameters": {
+                "oauth_access_token": {
+                    "description": "OAuth access token for the user",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
         }
     },
     "models": {

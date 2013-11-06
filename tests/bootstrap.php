@@ -14,7 +14,7 @@ $serviceBuilder = new Guzzle\Service\Builder\ServiceBuilder();
 // regular api client
 $serviceBuilder->set('test.sparkreel', \Sparkreel\Sdk\SparkreelClient::factory(array(
     "base_url"=>"https://api.sparkreel/v1",
-    "api_key" => "foo",
+    "api_key" => "YmM4ZmY5OTQ0OTFjMDdjM2M0OGExODNkZmI2OThiOTQwOWZiOTAwOA==",
     'ssl.certificate_authority' => 'system',
     'curl.options' => array(
         CURLOPT_SSL_VERIFYPEER => 0,

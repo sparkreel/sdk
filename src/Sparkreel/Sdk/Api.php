@@ -7,10 +7,6 @@
 
 namespace Sparkreel\Sdk;
 
-use Guzzle\Service\Exception\ValidationException;
-use Guzzle\Common\Exception\InvalidArgumentException;
-use Guzzle\Service\Exception\CommandTransferException;
-
 use Sparkreel\Sdk;
 
 class Api
@@ -45,13 +41,13 @@ class Api
      * the "videos" key will hold $limit number of videos for the requested
      * $page.
      *
-     * @param int $limit
-     * @param int $page
-     * @param string $moderationStatus
-     * @param string $status
-     * @param string $sortField
-     * @param string $sortDirection
-     * @param array $ids Id's to filter videos to
+     * @param  int                                 $limit
+     * @param  int                                 $page
+     * @param  string                              $moderationStatus
+     * @param  string                              $status
+     * @param  string                              $sortField
+     * @param  string                              $sortDirection
+     * @param  array                               $ids              Id's to filter videos to
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
@@ -73,9 +69,9 @@ class Api
     /**
      * Get a video's data, including embed code.
      *
-     * @param int $id
-     * @param int $width
-     * @param int $height
+     * @param  int                                 $id
+     * @param  int                                 $width
+     * @param  int                                 $height
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getVideo($id, $width=null, $height=null)
@@ -83,7 +79,7 @@ class Api
         $commandParams = array("id"=>$id);
         if (!empty($width)) {
             $commandParams["width"] = $width;
-        } else if (!empty($height)) {
+        } elseif (!empty($height)) {
             $commandParams["height"] = $height;
         }
 
@@ -95,10 +91,10 @@ class Api
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
-     * @param string $videoFile   The video file path.
-     * @param string $email       The Sender's email address.
-     * @param string $title       The Content title
-     * @param string $description The Content's description
+     * @param  string                              $videoFile   The video file path.
+     * @param  string                              $email       The Sender's email address.
+     * @param  string                              $title       The Content title
+     * @param  string                              $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
     public function publishNonMemberContent($videoFile, $email="", $title="", $description="")
@@ -119,10 +115,10 @@ class Api
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
-     * @param string $externalUrl   The video url.
-     * @param string $email       The Sender's email address.
-     * @param string $title       The Content title
-     * @param string $description The Content's description
+     * @param  string                              $externalUrl The video url.
+     * @param  string                              $email       The Sender's email address.
+     * @param  string                              $title       The Content title
+     * @param  string                              $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
     public function publishNonMemberContentExternal($externalUrl, $email="", $title="", $description="")
@@ -135,14 +131,14 @@ class Api
 
         return $this->client->execute($command);
     }
-    
+
     /**
      * Publish a video using an uploaded file (SparkreelVideo)
-     * 
-     * @param string $oauthAccessToken
-     * @param string $title
-     * @param string $description
-     * @param string $videoFile
+     *
+     * @param  string                              $oauthAccessToken
+     * @param  string                              $title
+     * @param  string                              $description
+     * @param  string                              $videoFile
      * @return array|\Guzzle\Http\Message\Response
      */
     public function publishMemberContentFile($oauthAccessToken, $title, $description, $videoFile)
@@ -160,14 +156,14 @@ class Api
 
       return $this->client->execute($command);
     }
-    
+
     /**
      * Publish a 3rd-party video
-     * 
-     * @param string $oauthAccessToken
-     * @param string $title
-     * @param string $description
-     * @param string $externalUrl
+     *
+     * @param  string                              $oauthAccessToken
+     * @param  string                              $title
+     * @param  string                              $description
+     * @param  string                              $externalUrl
      * @return array|\Guzzle\Http\Message\Response
      */
     public function publishMemberContentExternal($oauthAccessToken, $title, $description, $externalUrl)
@@ -183,10 +179,10 @@ class Api
     }
 
     /**
-     * 
-     * @param string $title
-     * @param string $description
-     * @param array $config
+     *
+     * @param  string                              $title
+     * @param  string                              $description
+     * @param  array                               $config
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateGroup($title, $description, $config = array())
@@ -200,22 +196,23 @@ class Api
 
         return $this->client->execute($command);
     }
-    
+
     /**
      * Get infor for group associated with API key
-     * 
+     *
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupInfo()
     {
       $command = $this->client->getCommand('GetGroupInfo');
+
       return $this->client->execute($command);
     }
-    
+
     /**
-     * 
-     * @param int $id
-     * @param array $params
+     *
+     * @param  int                                 $id
+     * @param  array                               $params
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateVideo($id, array $params = array())
@@ -225,13 +222,13 @@ class Api
 
         return $this->client->execute($command);
     }
-    
+
     /**
      * Convenience method for moderating a video as accepted
-     * 
+     *
      * Simply proxies updateVideo()
-     * 
-     * @param integer $id
+     *
+     * @param  integer                             $id
      * @return array|\Guzzle\Http\Message\Response
      * @see self::updateVideo()
      */
@@ -239,13 +236,13 @@ class Api
     {
       return $this->updateVideo($id, array('status' => 'accepted'));
     }
-    
+
     /**
      * Convenience method for moderating a video as rejected
-     * 
+     *
      * Simply proxies updateVideo()
-     * 
-     * @param integer $id
+     *
+     * @param  integer                             $id
      * @return array|\Guzzle\Http\Message\Response
      * @see self::updateVideo()
      */
@@ -256,8 +253,8 @@ class Api
 
     /**
      * Delete a video from the group
-     * 
-     * @param int $id
+     *
+     * @param  int                                 $id
      * @return array|\Guzzle\Http\Message\Response
      */
     public function deleteVideo($id)
@@ -268,13 +265,13 @@ class Api
 
         return $this->client->execute($command);
     }
-    
+
     /**
      * Get comments for a video
-     * 
-     * @param int $videoId
-     * @param int $page
-     * @param int $perPage
+     *
+     * @param  int                                 $videoId
+     * @param  int                                 $page
+     * @param  int                                 $perPage
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getVideoComments($videoId, $page = null, $perPage = null)
@@ -290,18 +287,18 @@ class Api
         if (null !== $perPage) {
             $commandParams['per_page'] = $perPage;
         }
-        
+
         $command = $this->client->getCommand('GetVideoComments', $commandParams);
 
         return $this->client->execute($command);
     }
-    
+
     /**
-     * 
-     * @param int $videoId
-     * @param string $oauthAccessToken
-     * @param string $commentText
-     * @param int $replyTo
+     *
+     * @param  int                                 $videoId
+     * @param  string                              $oauthAccessToken
+     * @param  string                              $commentText
+     * @param  int                                 $replyTo
      * @return array|\Guzzle\Http\Message\Response
      */
     public function postComment($videoId, $oauthAccessToken, $commentText, $replyTo = null)
@@ -311,12 +308,13 @@ class Api
           'oauth_access_token' => $oauthAccessToken,
           'comment_text' => $commentText
       );
-      
+
       if (is_numeric($replyTo)) {
         $params['reply_to'] = $replyTo;
       }
-      
+
       $command = $this->client->getCommand('PostComment', $params);
+
       return $this->client->execute($command);
     }
 
@@ -330,6 +328,34 @@ class Api
     {
         $params = array("url"=>$url);
         $command = $this->client->getCommand('GetExternalProviderInfo', $params);
+
         return $this->client->execute($command);
     }
+
+    /**
+     * Return a user identified either by id or by access token
+     *
+     * @param  int|null                            $id
+     * @param  string|null                         $oauthAccessToken
+     * @return array|\Guzzle\Http\Message\Response
+     * @throws \Exception
+     */
+    public function getUser($id = null, $oauthAccessToken = null)
+    {
+        $params = array();
+        $command = null;
+
+        if (!empty($id)) {
+            $params['id'] = $id;
+            $command = $this->client->getCommand('GetUser', $params);
+        } elseif (!empty($oauthAccessToken)) {
+            $params['oauth_access_token'] = $oauthAccessToken;
+            $command = $this->client->getCommand('GetCurrentUser', $params);
+        } else {
+            throw new \Exception("At least one of id or oauthAccessToken must be provided");
+        }
+
+        return $this->client->execute($command);
+    }
+
 }

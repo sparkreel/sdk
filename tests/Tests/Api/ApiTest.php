@@ -7,6 +7,9 @@
 
 namespace Sparkreel\Tests\Api;
 
+use Guzzle\Log\MessageFormatter;
+use Guzzle\Log\PsrLogAdapter;
+use Guzzle\Plugin\Log\LogPlugin;
 use Guzzle\Tests\GuzzleTestCase;
 use Sparkreel\Sdk\SparkreelClient;
 
@@ -189,4 +192,31 @@ class ApiTest extends GuzzleTestCase
       $this->assertArrayHasKey("comment", $res);
       $this->assertEquals("test comment", $res["comment"]["text"]);
     }
+
+    public function testGetUserInfo()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getUserData"));
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->getUser(2);
+
+        $this->assertArrayHasKey("user", $res);
+    }
+
+    public function testCurrentUserInfo()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getCurrentUserData"));
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $token = "ba94ada9c8fee7b11addf9c386f201377f30d417";
+        $res = $api->getUser(null, $token);
+
+        $this->assertArrayHasKey("user", $res);
+    }
+
+
 }

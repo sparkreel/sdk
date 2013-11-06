@@ -34,7 +34,7 @@ class Client extends GuzzleClient
         // Attach a service description to the client
         $description = ServiceDescription::factory(dirname(__DIR__) . '/Resources/OAuth2.json');
         $client->setDescription($description);
-        
+
         // send client_id & client_secret as Basic auth
         $client->setDefaultOption('auth', array($config->get('client_id'), $config->get('client_secret'), 'Basic'));
 
@@ -42,4 +42,3 @@ class Client extends GuzzleClient
     }
 
 }
-

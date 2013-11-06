@@ -31,15 +31,15 @@ class Api
             $this->client = $client;
         }
     }
-    
+
     /**
-     * 
+     *
      * @param string $authorizationCode
-     * 
+     *
      * @throws ValidationException
      * @throws InvalidArgumentException if an invalid command is passed
      * @throws CommandTransferException if an exception is encountered when transferring multiple commands
-     * 
+     *
      * @return array|\Guzzle\Http\Message\Response
      */
     public function requestAccessToken($authorizationCode)
