@@ -218,5 +218,32 @@ class ApiTest extends GuzzleTestCase
         $this->assertArrayHasKey("user", $res);
     }
 
+    public function testUpdateCurrentUserInfo()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("updateUser"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $token = "ba94ada9c8fee7b11addf9c386f201377f30d417";
+        $params = array(
+            "name"      => "Taba API",
+            "email"     => "taba@mailinator.com",
+            "facebook"  => "tabafb",
+            "twitter"   => "tabatw",
+            "youtube"   => "tabayt",
+            "quote"     => "desc from api",
+        );
+        $res = $api->updateUser($token, $params);
+
+        $this->assertArrayHasKey("user", $res);
+
+        foreach ($params as $key=>$val) {
+            $this->assertEquals($val, $res['user'][$key]);
+        }
+
+
+    }
 
 }

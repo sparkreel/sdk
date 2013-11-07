@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Thu, 07 Nov 2013 13:15:28 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.3
+
+{"user":{"id":"1","username":"pyro","name":"Taba API","email":"taba@mailinator.com","avatar":"https:\/\/commondatastorage.googleapis.com\/sparkreel_test_bucket_1\/a5d749f0bb337d164bfe0a157e49c0e8jpg?GoogleAccessId=735087624073-c67kr0a5m5avfovr9ef5a52obe944f5i@developer.gserviceaccount.com&Expires=1383830428&Signature=k%2F3Tsu7TE4ijd%2FpWmm5rm0uuTf5F5me4a%2FPtlbYkA9mOPcWeUGqna7snyFeszI2fy9dc7c%2FC4Aw9YNKFrkNuZWf%2FBlvOZUK6Jl21TWExUQXKWDsEVWMUxG2%2B7oYtP7HT7EzKMwSy%2FvAKIrRw6MzgWY3FnQ28hdHDnt9QOG8PTxE%3D","facebook":"tabafb","twitter":"tabatw","youtube":"tabayt","quote":"desc from api"}}

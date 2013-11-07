@@ -358,4 +358,19 @@ class Api
         return $this->client->execute($command);
     }
 
+    /**
+     * Update the current user data
+     *
+     * @param $oauthAccessToken
+     * @param array $params
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function updateUser($oauthAccessToken, array $params = array())
+    {
+        $combinedParams = array_merge(array('oauth_access_token' => $oauthAccessToken), $params);
+        $command = $this->client->getCommand('UpdateCurrentUser', $combinedParams);
+
+        return $this->client->execute($command);
+    }
+
 }

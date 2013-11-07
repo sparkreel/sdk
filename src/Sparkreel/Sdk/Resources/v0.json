@@ -345,6 +345,54 @@
                     "required": true
                 }
             }
+        },
+        "UpdateCurrentUser": {
+            "httpMethod": "PUT",
+            "uri": "user",
+            "summary": "Update the currently logged in user data",
+            "parameters": {
+                "oauth_access_token": {
+                    "description": "OAuth access token for the user",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                },
+                "name": {
+                    "description": "Full Name",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "email": {
+                    "description": "Email address",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "quote": {
+                    "description": "Proile quote",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "location": {
+                    "description": "Location",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "facebook": {
+                    "description": "Facebook Profile",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "twitter": {
+                    "description": "Twitter Profile",
+                    "type": "string",
+                    "location": "postField"
+                },
+                "youtube": {
+                    "description": "Youtube Channel",
+                    "type": "string",
+                    "location": "postField"
+                }
+            }
         }
     },
     "models": {
