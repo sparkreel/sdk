@@ -82,6 +82,11 @@
                     "description": "The width of the player.",
                     "type": "integer",
                     "location": "query"
+                },
+                "autoplay": {
+                    "description": "Wheather to autoplay or not.",
+                    "type": "integer",
+                    "location": "query"
                 }
             }
         },
