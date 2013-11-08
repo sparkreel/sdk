@@ -242,8 +242,21 @@ class ApiTest extends GuzzleTestCase
         foreach ($params as $key=>$val) {
             $this->assertEquals($val, $res['user'][$key]);
         }
+    }
 
+    public function testUpdateCurrentUserAvatar()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("postUserAvatar"));
 
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $token = "ba94ada9c8fee7b11addf9c386f201377f30d417";
+        $file = $videoFile = TEST_IMAGES_PATH."/avatar.jpg";
+        $res = $api->updateUserAvatar($token, $file);
+
+        $this->assertArrayHasKey("avatar", $res);
     }
 
 }

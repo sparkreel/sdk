@@ -398,6 +398,26 @@
                     "location": "postField"
                 }
             }
+        },
+        "PostUserAvatar": {
+            "httpMethod": "POST",
+            "uri": "user/avatar",
+            "summary": "Update the currently logged in user avatar",
+            "parameters": {
+                "oauth_access_token": {
+                    "description": "OAuth access token for the user",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                },
+                "avatar_file": {
+                    "description": "The avatar file location",
+                    "type": "string",
+                    "location": "postFile",
+                    "required": false,
+                    "name": "file"
+                }
+            }
         }
     },
     "models": {

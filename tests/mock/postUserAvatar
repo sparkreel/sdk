@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Fri, 08 Nov 2013 12:52:48 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.3
+
+{"avatar":"https:\/\/commondatastorage.googleapis.com\/sparkreel_test_bucket_1\/6ddd42e14c8ee26d710e0e82df8f6951?GoogleAccessId=735087624073-c67kr0a5m5avfovr9ef5a52obe944f5i@developer.gserviceaccount.com&Expires=1383915468&Signature=0eW%2FkE6RhPczH8FeuQz22V3W%2BKBPrwqkkR16G1ecn0r67B1XJkrqSDtVsdHm%2FTwIrHqzG9LMnJLJSJsWwVnQ3OFDC0XTihNGEMU81mwdTLFuPvxpH4mxUNAeHV9DpoGnWD4ixpy21yxqmNohpkRfHEhqlRecI4Iuv1e4ShWFoqs%3D"}

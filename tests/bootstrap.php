@@ -39,3 +39,4 @@ Guzzle\Tests\GuzzleTestCase::setServiceBuilder($serviceBuilder);
 Guzzle\Tests\GuzzleTestCase::setMockBasePath(__DIR__ . '/mock');
 
 define("TEST_VIDEOS_PATH", __DIR__ . '/videos');
+define("TEST_IMAGES_PATH", __DIR__ . '/images');

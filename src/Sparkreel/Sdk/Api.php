@@ -378,4 +378,24 @@ class Api
         return $this->client->execute($command);
     }
 
+    /**
+     * Update or create a user avatar
+     *
+     * @param string $oauthAccessToken
+     * @param string $avatarFile File location
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function updateUserAvatar($oauthAccessToken, $avatarFile)
+    {
+        if (substr($avatarFile, 0, 1) != "@") {
+            $avatarFile = "@" . $avatarFile;
+        }
+
+        $command = $this->client->getCommand('PostUserAvatar', array(
+            'oauth_access_token' => $oauthAccessToken,
+            'avatar_file'         => $avatarFile
+        ));
+
+        return $this->client->execute($command);
+    }
 }
