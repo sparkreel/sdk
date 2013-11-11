@@ -396,6 +396,11 @@
                     "description": "Youtube Channel",
                     "type": "string",
                     "location": "postField"
+                },
+                "other_link": {
+                    "description": "Other Social Link",
+                    "type": "string",
+                    "location": "postField"
                 }
             }
         },
