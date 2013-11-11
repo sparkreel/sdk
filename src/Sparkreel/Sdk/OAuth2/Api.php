@@ -68,4 +68,20 @@ class Api
 
         return $url;
     }
+
+    /**
+     * Generates a change password url
+     *
+     * @return string
+     */
+    public function getChangePasswordUrl()
+    {
+        $url = sprintf("%s/change-password?client_id=%s&state=%s",
+            $this->client->getBaseUrl(),
+            $this->client->getConfig('client_id'),
+            md5(uniqid())
+        );
+
+        return $url;
+    }
 }
