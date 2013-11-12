@@ -340,12 +340,13 @@ class Api
     /**
      * Return a user identified either by id or by access token
      *
-     * @param  int|null                            $id
-     * @param  string|null                         $oauthAccessToken
-     * @return array|\Guzzle\Http\Message\Response
+     * @param  int|null $id
+     * @param  string|null $oauthAccessToken
+     * @param null $username
      * @throws \Exception
+     * @return array|\Guzzle\Http\Message\Response
      */
-    public function getUser($id = null, $oauthAccessToken = null)
+    public function getUser($id = null, $oauthAccessToken = null, $username = null)
     {
         $params = array();
         $command = null;
@@ -356,6 +357,9 @@ class Api
         } elseif (!empty($oauthAccessToken)) {
             $params['oauth_access_token'] = $oauthAccessToken;
             $command = $this->client->getCommand('GetCurrentUser', $params);
+        } elseif (!empty($username)) {
+            $params['username'] = $username;
+            $command = $this->client->getCommand('GetUser', $params);
         } else {
             throw new \Exception("At least one of id or oauthAccessToken must be provided");
         }

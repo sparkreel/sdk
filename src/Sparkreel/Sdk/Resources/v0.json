@@ -327,14 +327,20 @@
         },
         "GetUser": {
             "httpMethod": "GET",
-            "uri": "user/{id}",
+            "uri": "user",
             "summary": "Get a users data",
             "parameters": {
                 "id": {
                     "description": "ID of the user to data for",
                     "type": "integer",
-                    "location": "uri",
-                    "required": true
+                    "location": "query",
+                    "required": false
+                },
+                "username": {
+                    "description": "Email of the user to data for",
+                    "type": "string",
+                    "location": "query",
+                    "required": false
                 }
             }
         },

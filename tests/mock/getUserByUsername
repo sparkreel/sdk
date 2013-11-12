@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Tue, 12 Nov 2013 17:33:50 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.3
+
+{"user":{"id":"1","username":"pyro","name":"Tabar\u00e9 Caorsi","email":"taba@mailinator.com","location":"Montevideo, Uruguay","avatar":"https:\/\/commondatastorage.googleapis.com\/sparkreel_test_bucket_1\/ca52e321cc56794ba0e1b086a5e18c50?GoogleAccessId=735087624073-c67kr0a5m5avfovr9ef5a52obe944f5i@developer.gserviceaccount.com&Expires=1384277930&Signature=WfEI4Pe5MBs%2BiKlp77pGeyNtV%2BFydw76XEwuRMUmxZ0T2N81IMNX4h6eA6LrXCWkA9S3lRcQa82lBpKhYXdbIrC40qbiNFzcuOvO0GD%2B73YTD1%2BqXuvMN5ZClcjPoJ9wpt4d98Tc3GAlysWBCy8ckEtcU0JCScDD9GWwk1HF9Ns%3D","facebook":"tabare.caorsi","twitter":"p1r0_uy","youtube":"","other_link":"","quote":"desc from api"}}

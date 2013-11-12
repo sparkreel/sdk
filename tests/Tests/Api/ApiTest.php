@@ -259,4 +259,17 @@ class ApiTest extends GuzzleTestCase
         $this->assertArrayHasKey("avatar", $res);
     }
 
+    public function testGetUserInfoByEmail()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getUserByUsername"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->getUser(null, null, 'pyro');
+
+        $this->assertArrayHasKey("user", $res);
+    }
+
 }
