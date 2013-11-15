@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Fri, 15 Nov 2013 11:40:00 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.3
+
+{"topten":[{"userId":"1","username":"pyro","views":"133688"},{"userId":"2","username":"gasparolo","views":"193"},{"userId":"26","username":"adf","views":"46"},{"userId":"66","username":"test1212121254","views":"5"}]}

@@ -429,6 +429,13 @@
                     "name": "file"
                 }
             }
+        },
+        "GetTopTen": {
+            "httpMethod": "GET",
+            "uri": "user/topten",
+            "summary": "Get the ten users by number of views for this group",
+            "parameters": {
+            }
         }
     },
     "models": {

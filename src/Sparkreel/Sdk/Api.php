@@ -402,4 +402,11 @@ class Api
 
         return $this->client->execute($command);
     }
+
+    public function getTopTenUsers()
+    {
+        $command = $this->client->getCommand('GetTopTen', array());
+
+        return $this->client->execute($command);
+    }
 }
