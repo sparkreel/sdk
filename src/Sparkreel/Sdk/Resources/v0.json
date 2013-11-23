@@ -63,6 +63,14 @@
                 }
             }
         },
+        "GetGroupMembers": {
+            "httpMethod": "GET",
+            "uri": "members",
+            "summary": "Returns all the members for the group associated with the api key.",
+            "parameters": {
+
+            }
+        },
         "GetVideo": {
             "httpMethod": "GET",
             "uri": "video/{id}/embed",

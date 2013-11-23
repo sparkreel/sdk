@@ -67,6 +67,15 @@ class Api
     }
 
     /**
+     * Returns all the group members
+     */
+    public function getGroupMembers()
+    {
+        $command = $this->client->getCommand('GetGroupMembers');
+        return $this->client->execute($command);
+    }
+
+    /**
      * Get a video's data, including embed code.
      *
      * @param  int $id
