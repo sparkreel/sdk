@@ -415,7 +415,13 @@
                     "description": "Other Social Link",
                     "type": "string",
                     "location": "postField"
+                },
+                "email_subscription": {
+                    "description": "Email Notifications Toggle",
+                    "type": "integer",
+                    "location": "postField"
                 }
+
             }
         },
         "PostUserAvatar": {
