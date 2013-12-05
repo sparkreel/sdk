@@ -11,7 +11,7 @@ use Sparkreel\Sdk;
 
 class Api
 {
-    /** @var \Sparkreel\Sdk\SparkreelClient  */
+    /** @var \Sparkreel\Sdk\SparkreelClient */
     private $client = null;
 
     /**
@@ -25,7 +25,7 @@ class Api
      * @param array                  $options
      * @param \Guzzle\Service\Client $client
      */
-    public function __construct($baseUrl = "https://api.sparkreel.com/v1", $options=array(), \Guzzle\Service\Client &$client = null)
+    public function __construct($baseUrl = "https://api.sparkreel.com/v1", $options = array(), \Guzzle\Service\Client &$client = null)
     {
         if ($client === null) {
             $options['base_url'] = $baseUrl;
@@ -55,13 +55,13 @@ class Api
                                    $sortDirection = "desc", $ids = array())
     {
         $command = $this->client->getCommand('GetGroupVideos',
-            array('page'=>$page,
-                  'per_page'=>$limit,
-                  'moderation_status'=>$moderationStatus,
-                  'status'=>$status,
-                  'sort_field'=>$sortField,
-                  'sort_direction'=>$sortDirection,
-                  'ids'=>implode(",", $ids)));
+            array('page' => $page,
+                'per_page' => $limit,
+                'moderation_status' => $moderationStatus,
+                'status' => $status,
+                'sort_field' => $sortField,
+                'sort_direction' => $sortDirection,
+                'ids' => implode(",", $ids)));
 
         return $this->client->execute($command);
     }
@@ -72,21 +72,22 @@ class Api
     public function getGroupMembers()
     {
         $command = $this->client->getCommand('GetGroupMembers');
+
         return $this->client->execute($command);
     }
 
     /**
      * Get a video's data, including embed code.
      *
-     * @param  int $id
-     * @param  int $width
-     * @param  int $height
-     * @param  int $autoplay
+     * @param  int                                 $id
+     * @param  int                                 $width
+     * @param  int                                 $height
+     * @param  int                                 $autoplay
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function getVideo($id, $width=null, $height=null, $autoplay=null)
+    public function getVideo($id, $width = null, $height = null, $autoplay = null)
     {
-        $commandParams = array("id"=>$id);
+        $commandParams = array("id" => $id);
         if (!empty($width)) {
             $commandParams["width"] = $width;
         } elseif (!empty($height)) {
@@ -111,17 +112,17 @@ class Api
      * @param  string                              $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishNonMemberContent($videoFile, $email="", $title="", $description="")
+    public function publishNonMemberContent($videoFile, $email = "", $title = "", $description = "")
     {
         if (substr($videoFile, 0, 1) != "@") {
-            $videoFile = "@".$videoFile;
+            $videoFile = "@" . $videoFile;
         }
 
         $command = $this->client->getCommand('PublishNonMemberContent',
-            array('user_email'=>$email,
-                'title'=>$title,
-                'description'=>$description,
-                'video_file'=>$videoFile));
+            array('user_email' => $email,
+                'title' => $title,
+                'description' => $description,
+                'video_file' => $videoFile));
 
         return $this->client->execute($command);
     }
@@ -135,13 +136,13 @@ class Api
      * @param  string                              $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishNonMemberContentExternal($externalUrl, $email="", $title="", $description="")
+    public function publishNonMemberContentExternal($externalUrl, $email = "", $title = "", $description = "")
     {
         $command = $this->client->getCommand('PublishNonMemberContent',
-            array('user_email'=>$email,
-                'title'=>$title,
-                'description'=>$description,
-                'external_url'=>$externalUrl));
+            array('user_email' => $email,
+                'title' => $title,
+                'description' => $description,
+                'external_url' => $externalUrl));
 
         return $this->client->execute($command);
     }
@@ -157,18 +158,18 @@ class Api
      */
     public function publishMemberContentFile($oauthAccessToken, $title, $description, $videoFile)
     {
-      if (substr($videoFile, 0, 1) != "@") {
-          $videoFile = "@" . $videoFile;
-      }
+        if (substr($videoFile, 0, 1) != "@") {
+            $videoFile = "@" . $videoFile;
+        }
 
-      $command = $this->client->getCommand('PublishMemberContent', array(
-          'oauth_access_token' => $oauthAccessToken,
-          'title'              => $title,
-          'description'        => $description,
-          'video_file'         => $videoFile
-      ));
+        $command = $this->client->getCommand('PublishMemberContent', array(
+            'oauth_access_token' => $oauthAccessToken,
+            'title' => $title,
+            'description' => $description,
+            'video_file' => $videoFile
+        ));
 
-      return $this->client->execute($command);
+        return $this->client->execute($command);
     }
 
     /**
@@ -182,36 +183,36 @@ class Api
      */
     public function publishMemberContentExternal($oauthAccessToken, $title, $description, $externalUrl)
     {
-      $command = $this->client->getCommand('PublishMemberContent', array(
-          'oauth_access_token' => $oauthAccessToken,
-          'title'              => $title,
-          'description'        => $description,
-          'external_url'       => $externalUrl
-      ));
+        $command = $this->client->getCommand('PublishMemberContent', array(
+            'oauth_access_token' => $oauthAccessToken,
+            'title' => $title,
+            'description' => $description,
+            'external_url' => $externalUrl
+        ));
 
-      return $this->client->execute($command);
+        return $this->client->execute($command);
     }
 
     /**
      *
-     * @param  string $title
-     * @param  string $description
-     * @param  array $config
-     * @param null $submission
+     * @param  string                              $title
+     * @param  string                              $description
+     * @param  array                               $config
+     * @param  null                                $submission
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateGroup($title, $description, $config = array(), $submission = null)
     {
-      $command = $this->client->getCommand('UpdateGroup',
+        $command = $this->client->getCommand('UpdateGroup',
             array(
                 'title' => $title,
                 'description' => $description,
                 'config' => $config
             ));
 
-      if (!empty($submission)) {
-          $command['submission'] = $submission;
-      }
+        if (!empty($submission)) {
+            $command['submission'] = $submission;
+        }
 
         return $this->client->execute($command);
     }
@@ -223,9 +224,23 @@ class Api
      */
     public function getGroupInfo()
     {
-      $command = $this->client->getCommand('GetGroupInfo');
+        $command = $this->client->getCommand('GetGroupInfo');
 
-      return $this->client->execute($command);
+        return $this->client->execute($command);
+    }
+
+    /**
+     * Convenience method for moderating a video as accepted
+     *
+     * Simply proxies updateVideo()
+     *
+     * @param  integer                             $id
+     * @return array|\Guzzle\Http\Message\Response
+     * @see self::updateVideo()
+     */
+    public function acceptVideo($id)
+    {
+        return $this->updateVideo($id, array('status' => 'accepted'));
     }
 
     /**
@@ -243,20 +258,6 @@ class Api
     }
 
     /**
-     * Convenience method for moderating a video as accepted
-     *
-     * Simply proxies updateVideo()
-     *
-     * @param  integer                             $id
-     * @return array|\Guzzle\Http\Message\Response
-     * @see self::updateVideo()
-     */
-    public function acceptVideo($id)
-    {
-      return $this->updateVideo($id, array('status' => 'accepted'));
-    }
-
-    /**
      * Convenience method for moderating a video as rejected
      *
      * Simply proxies updateVideo()
@@ -267,7 +268,7 @@ class Api
      */
     public function rejectVideo($id)
     {
-      return $this->updateVideo($id, array('status' => 'rejected'));
+        return $this->updateVideo($id, array('status' => 'rejected'));
     }
 
     /**
@@ -279,7 +280,7 @@ class Api
     public function deleteVideo($id)
     {
         $command = $this->client->getCommand('DeleteVideo', array(
-          'id' => $id
+            'id' => $id
         ));
 
         return $this->client->execute($command);
@@ -322,19 +323,19 @@ class Api
      */
     public function postComment($videoId, $oauthAccessToken, $commentText, $replyTo = null)
     {
-      $params = array(
-          'id' => $videoId,
-          'oauth_access_token' => $oauthAccessToken,
-          'comment_text' => $commentText
-      );
+        $params = array(
+            'id' => $videoId,
+            'oauth_access_token' => $oauthAccessToken,
+            'comment_text' => $commentText
+        );
 
-      if (is_numeric($replyTo)) {
-        $params['reply_to'] = $replyTo;
-      }
+        if (is_numeric($replyTo)) {
+            $params['reply_to'] = $replyTo;
+        }
 
-      $command = $this->client->getCommand('PostComment', $params);
+        $command = $this->client->getCommand('PostComment', $params);
 
-      return $this->client->execute($command);
+        return $this->client->execute($command);
     }
 
     /**
@@ -345,7 +346,7 @@ class Api
      */
     public function getExternalProviderInfo($url)
     {
-        $params = array("url"=>$url);
+        $params = array("url" => $url);
         $command = $this->client->getCommand('GetExternalProviderInfo', $params);
 
         return $this->client->execute($command);
@@ -354,9 +355,9 @@ class Api
     /**
      * Return a user identified either by id or by access token
      *
-     * @param  int|null $id
-     * @param  string|null $oauthAccessToken
-     * @param null $username
+     * @param  int|null                            $id
+     * @param  string|null                         $oauthAccessToken
+     * @param  null                                $username
      * @throws \Exception
      * @return array|\Guzzle\Http\Message\Response
      */
@@ -385,7 +386,7 @@ class Api
      * Update the current user data
      *
      * @param $oauthAccessToken
-     * @param array $params
+     * @param  array                               $params
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateUser($oauthAccessToken, array $params = array())
@@ -399,8 +400,8 @@ class Api
     /**
      * Update or create a user avatar
      *
-     * @param string $oauthAccessToken
-     * @param string $avatarFile File location
+     * @param  string                              $oauthAccessToken
+     * @param  string                              $avatarFile       File location
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateUserAvatar($oauthAccessToken, $avatarFile)
@@ -411,7 +412,7 @@ class Api
 
         $command = $this->client->getCommand('PostUserAvatar', array(
             'oauth_access_token' => $oauthAccessToken,
-            'avatar_file'         => $avatarFile
+            'avatar_file' => $avatarFile
         ));
 
         return $this->client->execute($command);
