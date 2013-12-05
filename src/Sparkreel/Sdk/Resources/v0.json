@@ -189,6 +189,12 @@
                     "type": "string",
                     "location": "postField"
                 },
+                "submission": {
+                    "description": "Submission type",
+                    "type": "string",
+                    "enum": ["automatic", "moderated"],
+                    "location": "postField"
+                },
                 "config": {
                     "description": "Additional settings for your group",
                     "type": "object",
