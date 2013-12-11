@@ -300,4 +300,43 @@ class ApiTest extends GuzzleTestCase
         $this->assertGreaterThan(0, count($res));
     }
 
+    public function testGetVideosByTag()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getVideoByTag"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->getGroupVideosByTeg("testertag");
+
+        $this->assertGreaterThan(0, count($res['videos']));
+    }
+
+    public function testAddVideoTag()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("addTag"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->addVideoTag("testertag123", 415);
+
+        $this->assertTrue($res);
+    }
+
+    public function testRemoveVideoTag()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("addTag"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->removeVideoTag("testertag123", 415);
+
+        $this->assertTrue($res);
+    }
+
 }

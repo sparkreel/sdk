@@ -63,6 +63,101 @@
                 }
             }
         },
+        "GetGroupVideosByTag": {
+            "httpMethod": "GET",
+            "uri": "tag/{tag}",
+            "summary": "Returns videos for the group associated with the api key tagged with tag.",
+            "parameters": {
+                "format": {
+                    "description": "Specifies the format of the response, json or xml, right now only json",
+                    "type": "string",
+                    "location": "query",
+                    "default": "json"
+                },
+                "page": {
+                    "description": "The requested page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 1
+                },
+                "per_page": {
+                    "description": "The number of videos per page",
+                    "type": "integer",
+                    "location": "query",
+                    "default": 10
+                },
+                "moderation_status": {
+                    "description": "The modaration status",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["pending", "accepted", "rejected"],
+                    "default": "accepted"
+                },
+                "status": {
+                    "description": "The video processing status",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["pending", "processing", "ready", "error"],
+                    "default": "ready"
+                },
+                "sort_field": {
+                    "description": "The field to order videos by",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["date", "views", "title"],
+                    "default": "date"
+                },
+                "sort_direction": {
+                    "description": "The the direction in which to order videis",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["asc", "desc"],
+                    "default": "asc"
+                },
+                "tag": {
+                    "description": "The tag to filter videos by.",
+                    "type": "string",
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "AddVideoTag": {
+            "httpMethod": "POST",
+            "uri": "video/{id}/tag",
+            "summary": "Add tag to video.",
+            "parameters": {
+                "id": {
+                    "description": "The id of the video",
+                    "type": "integer",
+                    "location": "uri"
+                },
+                "tag": {
+                    "description": "The tag to fadd.",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "RemoveVideoTag": {
+            "httpMethod": "DELETE",
+            "uri": "video/{id}/tag",
+            "summary": "Remove a tag from a video.",
+            "parameters": {
+                "id": {
+                    "description": "The id of the video",
+                    "type": "integer",
+                    "location": "uri"
+                },
+                "tag": {
+                    "description": "The tag to remove.",
+                    "type": "string",
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
         "GetGroupMembers": {
             "httpMethod": "GET",
             "uri": "members",

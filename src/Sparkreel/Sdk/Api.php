@@ -67,6 +67,64 @@ class Api
     }
 
     /**
+     * Get an array containing the response of the api. If successful,
+     * the "videos" key will hold $limit number of videos for the requested
+     * $page.
+     *
+     * @param $tag
+     * @param  int $limit
+     * @param  int $page
+     * @param  string $moderationStatus
+     * @param  string $status
+     * @param  string $sortField
+     * @param  string $sortDirection
+     * @param  array $ids Id's to filter videos to
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function getGroupVideosByTeg($tag, $limit = 10, $page = 1, $moderationStatus = "accepted",
+                                   $status = "ready", $sortField = "date",
+                                   $sortDirection = "desc")
+    {
+        $command = $this->client->getCommand('GetGroupVideosByTag',
+            array(
+                'tag'=>$tag,
+                'page' => $page,
+                'per_page' => $limit,
+                'moderation_status' => $moderationStatus,
+                'status' => $status,
+                'sort_field' => $sortField,
+                'sort_direction' => $sortDirection,
+            )
+        );
+
+        return $this->client->execute($command);
+    }
+
+    public function addVideoTag($tag, $videoId)
+    {
+        $command = $this->client->getCommand('AddVideoTag',
+            array(
+                'tag'=>$tag,
+                'id' => $videoId,
+            )
+        );
+
+        return $this->client->execute($command);
+    }
+
+    public function removeVideoTag($tag, $videoId)
+    {
+        $command = $this->client->getCommand('RemoveVideoTag',
+            array(
+                'tag'=>$tag,
+                'id' => $videoId,
+            )
+        );
+
+        return $this->client->execute($command);
+    }
+
+    /**
      * Returns all the group members
      */
     public function getGroupMembers()

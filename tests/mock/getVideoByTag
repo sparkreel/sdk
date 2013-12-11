@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.2.6 (Ubuntu)
+Date: Wed, 11 Dec 2013 15:27:08 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.4.9-4ubuntu2.3
+
+{"videos":[{"id":"413","title":"The Accordion Party (THE INSTRUMENTALS - Episode 3)","description":"test","date":"2013-11-22 05:46:38","views":"0","comments":"0","username":"anonymous","provider":"youtube","aspect_ratio":"16:9","thumbnail":{"url":"\/\/www.sparkreel\/group\/get-video-thumb\/id\/413"}},{"id":"412","title":"Doctor Who TARDIS Cake | Cupcake Jemma","description":"test","date":"2013-11-21 14:56:50","views":"0","comments":"0","username":"bsputnik","provider":"youtube","aspect_ratio":"16:9","thumbnail":{"url":"\/\/www.sparkreel\/group\/get-video-thumb\/id\/412"}}],"total_videos":2,"total_pages":1,"current_pate":"1"}
