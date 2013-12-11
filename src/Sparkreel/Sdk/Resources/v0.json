@@ -290,6 +290,11 @@
                     "enum": ["automatic", "moderated"],
                     "location": "postField"
                 },
+                "current_tag": {
+                    "description": "Current Auto Tag",
+                    "type": "string",
+                    "location": "postField"
+                },
                 "config": {
                     "description": "Additional settings for your group",
                     "type": "object",

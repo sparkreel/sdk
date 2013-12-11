@@ -253,13 +253,14 @@ class Api
 
     /**
      *
-     * @param  string                              $title
-     * @param  string                              $description
-     * @param  array                               $config
-     * @param  null                                $submission
+     * @param  string $title
+     * @param  string $description
+     * @param  array $config
+     * @param  null $submission
+     * @param null $currentTag
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function updateGroup($title, $description, $config = array(), $submission = null)
+    public function updateGroup($title, $description, $config = array(), $submission = null, $currentTag = null)
     {
         $command = $this->client->getCommand('UpdateGroup',
             array(
@@ -270,6 +271,10 @@ class Api
 
         if (!empty($submission)) {
             $command['submission'] = $submission;
+        }
+
+        if ($currentTag !== null) {
+            $command['current_tag'] = $currentTag;
         }
 
         return $this->client->execute($command);
