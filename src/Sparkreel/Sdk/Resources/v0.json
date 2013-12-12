@@ -166,6 +166,14 @@
 
             }
         },
+        "GetGroupTags": {
+            "httpMethod": "GET",
+            "uri": "group/tags",
+            "summary": "Returns all the tags for the group associated with the api key.",
+            "parameters": {
+
+            }
+        },
         "GetVideo": {
             "httpMethod": "GET",
             "uri": "video/{id}/embed",

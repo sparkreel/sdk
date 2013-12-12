@@ -135,6 +135,16 @@ class Api
     }
 
     /**
+     * Returns all the group tags
+     */
+    public function getGroupTags()
+    {
+        $command = $this->client->getCommand('GetGroupTags');
+
+        return $this->client->execute($command);
+    }
+
+    /**
      * Get a video's data, including embed code.
      *
      * @param  int                                 $id
