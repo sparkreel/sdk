@@ -339,6 +339,19 @@ class ApiTest extends GuzzleTestCase
         $this->assertTrue($res);
     }
 
+    public function testClearVideoTags()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("clearVideoTags"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->clearVideoTags(413);
+
+        $this->assertTrue($res);
+    }
+
     public function testGetGroupTags()
     {
         /** @var  \Sparkreel\Sdk\SparkreelClient $client */

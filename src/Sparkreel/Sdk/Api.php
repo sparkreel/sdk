@@ -100,6 +100,14 @@ class Api
         return $this->client->execute($command);
     }
 
+    /**
+     * Add tags to a video, multiple comma separated tags can be
+     * added at once.
+     *
+     * @param $tag
+     * @param $videoId
+     * @return array|\Guzzle\Http\Message\Response
+     */
     public function addVideoTag($tag, $videoId)
     {
         $command = $this->client->getCommand('AddVideoTag',
@@ -112,11 +120,35 @@ class Api
         return $this->client->execute($command);
     }
 
+    /**
+     * Remove a single tag from a content
+     *
+     * @param $tag
+     * @param $videoId
+     * @return array|\Guzzle\Http\Message\Response
+     */
     public function removeVideoTag($tag, $videoId)
     {
         $command = $this->client->getCommand('RemoveVideoTag',
             array(
                 'tag'=>$tag,
+                'id' => $videoId,
+            )
+        );
+
+        return $this->client->execute($command);
+    }
+
+    /**
+     * Remove all tags from a content
+     *
+     * @param $videoId
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function clearVideoTags($videoId)
+    {
+        $command = $this->client->getCommand('ClearVideoTags',
+            array(
                 'id' => $videoId,
             )
         );

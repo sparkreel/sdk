@@ -158,6 +158,18 @@
                 }
             }
         },
+        "ClearVideoTags": {
+            "httpMethod": "DELETE",
+            "uri": "video/{id}/tags",
+            "summary": "Clear tags from a video.",
+            "parameters": {
+                "id": {
+                    "description": "The id of the video",
+                    "type": "integer",
+                    "location": "uri"
+                }
+            }
+        },
         "GetGroupMembers": {
             "httpMethod": "GET",
             "uri": "members",
