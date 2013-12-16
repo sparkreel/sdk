@@ -72,13 +72,13 @@ class Api
      * $page.
      *
      * @param $tag
-     * @param  int $limit
-     * @param  int $page
-     * @param  string $moderationStatus
-     * @param  string $status
-     * @param  string $sortField
-     * @param  string $sortDirection
-     * @param  array $ids Id's to filter videos to
+     * @param  int                                 $limit
+     * @param  int                                 $page
+     * @param  string                              $moderationStatus
+     * @param  string                              $status
+     * @param  string                              $sortField
+     * @param  string                              $sortDirection
+     * @param  array                               $ids              Id's to filter videos to
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupVideosByTeg($tag, $limit = 10, $page = 1, $moderationStatus = "accepted",
@@ -295,11 +295,11 @@ class Api
 
     /**
      *
-     * @param  string $title
-     * @param  string $description
-     * @param  array $config
-     * @param  null $submission
-     * @param null $currentTag
+     * @param  string                              $title
+     * @param  string                              $description
+     * @param  array                               $config
+     * @param  null                                $submission
+     * @param  null                                $currentTag
      * @return array|\Guzzle\Http\Message\Response
      */
     public function updateGroup($title, $description, $config = array(), $submission = null, $currentTag = null)
