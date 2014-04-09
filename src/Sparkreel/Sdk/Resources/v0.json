@@ -210,6 +210,11 @@
                     "description": "Wheather to autoplay or not.",
                     "type": "integer",
                     "location": "query"
+                },
+                "extra": {
+                    "description": "Whether to return extra oembed info.",
+                    "type": "boolean",
+                    "location": "query"
                 }
             }
         },

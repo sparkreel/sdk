@@ -179,13 +179,14 @@ class Api
     /**
      * Get a video's data, including embed code.
      *
-     * @param  int                                 $id
-     * @param  int                                 $width
-     * @param  int                                 $height
-     * @param  int                                 $autoplay
+     * @param  int $id
+     * @param  int $width
+     * @param  int $height
+     * @param  int $autoplay
+     * @param null $extra
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function getVideo($id, $width = null, $height = null, $autoplay = null)
+    public function getVideo($id, $width = null, $height = null, $autoplay = null, $extra=null)
     {
         $commandParams = array("id" => $id);
         if (!empty($width)) {
@@ -196,6 +197,10 @@ class Api
 
         if (!empty($autoplay)) {
             $commandParams['autoplay'] = 1;
+        }
+
+        if (!empty($extra)) {
+            $commandParams['extra'] = $extra;
         }
 
         $command = $this->client->getCommand('GetVideo', $commandParams);
