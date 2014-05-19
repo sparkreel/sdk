@@ -211,21 +211,19 @@ class Api
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
-     * @param  string                              $videoFile   The video file path.
-     * @param  string                              $email       The Sender's email address.
-     * @param  string                              $title       The Content title
-     * @param  string                              $description The Content's description
+     * @param  string $videoFile The video file path.
+     * @param  string $title The Content title
+     * @param  string $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishNonMemberContent($videoFile, $email = "", $title = "", $description = "")
+    public function publishNonMemberContent($videoFile, $title = "", $description = "")
     {
         if (substr($videoFile, 0, 1) != "@") {
             $videoFile = "@" . $videoFile;
         }
 
         $command = $this->client->getCommand('PublishNonMemberContent',
-            array('user_email' => $email,
-                'title' => $title,
+            array('title' => $title,
                 'description' => $description,
                 'video_file' => $videoFile));
 
@@ -236,16 +234,14 @@ class Api
      * Publish content as non member to the group specified by $groupEmail.
      *
      * @param  string                              $externalUrl The video url.
-     * @param  string                              $email       The Sender's email address.
      * @param  string                              $title       The Content title
      * @param  string                              $description The Content's description
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishNonMemberContentExternal($externalUrl, $email = "", $title = "", $description = "")
+    public function publishNonMemberContentExternal($externalUrl, $title = "", $description = "")
     {
         $command = $this->client->getCommand('PublishNonMemberContent',
-            array('user_email' => $email,
-                'title' => $title,
+            array('title' => $title,
                 'description' => $description,
                 'external_url' => $externalUrl));
 
@@ -255,20 +251,18 @@ class Api
     /**
      * Publish a video using an uploaded file (SparkreelVideo)
      *
-     * @param  string                              $oauthAccessToken
      * @param  string                              $title
      * @param  string                              $description
      * @param  string                              $videoFile
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishMemberContentFile($oauthAccessToken, $title, $description, $videoFile)
+    public function publishMemberContentFile($title, $description, $videoFile)
     {
         if (substr($videoFile, 0, 1) != "@") {
             $videoFile = "@" . $videoFile;
         }
 
         $command = $this->client->getCommand('PublishMemberContent', array(
-            'oauth_access_token' => $oauthAccessToken,
             'title' => $title,
             'description' => $description,
             'video_file' => $videoFile
@@ -280,16 +274,14 @@ class Api
     /**
      * Publish a 3rd-party video
      *
-     * @param  string                              $oauthAccessToken
      * @param  string                              $title
      * @param  string                              $description
      * @param  string                              $externalUrl
      * @return array|\Guzzle\Http\Message\Response
      */
-    public function publishMemberContentExternal($oauthAccessToken, $title, $description, $externalUrl)
+    public function publishMemberContentExternal($title, $description, $externalUrl)
     {
         $command = $this->client->getCommand('PublishMemberContent', array(
-            'oauth_access_token' => $oauthAccessToken,
             'title' => $title,
             'description' => $description,
             'external_url' => $externalUrl
