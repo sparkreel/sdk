@@ -101,6 +101,18 @@ class ApiTest extends GuzzleTestCase
 
         $this->assertEquals($video['id'], 1);
     }
+
+    public function testGetDownloadLink()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("getDownloadLink"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+        $video = $api->getDownloadLink(1);
+
+        $this->assertStringStartsWith("https://commondatastorage.googleapis.com/", $video['url']);
+    }
     
     public function testUpdateGroup()
     {
