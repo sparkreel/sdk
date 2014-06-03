@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.4.6 (Ubuntu)
+Date: Tue, 03 Jun 2014 19:25:35 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.5.9-1ubuntu4
+
+{"url":"https:\/\/commondatastorage.googleapis.com\/sparkreel_test_bucket_1\/675d67c1b21cd2f99762e359acd9cbb9?GoogleAccessId=735087624073-c67kr0a5m5avfovr9ef5a52obe944f5i@developer.gserviceaccount.com&Expires=1401996335&Signature=utzSCvxAxrqqxE3OVzqw3nVwZhss3RK5Bc3Aq6UfnfofvAtUHctWoyxBFaFajYEpX%2BZvG6J9E3Mh0qf9JVPieRDkr6vjha3VbnBVhCbv%2Fz4rQb4KGv8V5RmVLDwSWL5G%2BbNDYiUSt7n%2FowTyn04Cp8Z8aHQcpw8590zfk5zNfr0%3D"}
