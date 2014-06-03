@@ -218,6 +218,18 @@
                 }
             }
         },
+        "GetDownloadLink": {
+            "httpMethod": "GET",
+            "uri": "video/{id}/download",
+            "summary": "Returns the specified video's download link.",
+            "parameters": {
+                "id": {
+                    "description": "The id of the video",
+                    "type": "integer",
+                    "location": "uri"
+                }
+            }
+        },
         "PublishNonMemberContent": {
             "httpMethod": "POST",
             "uri": "video",

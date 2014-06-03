@@ -208,6 +208,15 @@ class Api
         return $this->client->execute($command);
     }
 
+    public function getDownloadLink($id)
+    {
+        $commandParams = array("id" => $id);
+
+        $command = $this->client->getCommand('GetDownloadLink', $commandParams);
+
+        return $this->client->execute($command);
+    }
+
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *
