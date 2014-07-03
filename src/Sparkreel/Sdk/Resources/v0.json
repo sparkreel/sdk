@@ -60,6 +60,12 @@
                     "type": "string",
                     "location": "query",
                     "default": ""
+                },
+                "provider": {
+                    "description": "The provider to filter videos by",
+                    "type": "string",
+                    "location": "query",
+                    "enum": ["sparkreel", "sparkreelPhoto", "instagram", "instagramPhoto", "twitterPhoto", "vine", "youtube"]
                 }
             }
         },
@@ -182,14 +188,6 @@
             "httpMethod": "GET",
             "uri": "group/tags",
             "summary": "Returns all the tags for the group associated with the api key.",
-            "parameters": {
-
-            }
-        },
-        "GetGroupData": {
-            "httpMethod": "GET",
-            "uri": "group/data",
-            "summary": "Returns tags and providers data for the group associated with the api key.",
             "parameters": {
 
             }

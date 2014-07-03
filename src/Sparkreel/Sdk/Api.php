@@ -52,7 +52,7 @@ class Api
      */
     public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
                                    $status = "ready", $sortField = "date",
-                                   $sortDirection = "desc", $ids = array())
+                                   $sortDirection = "desc", $ids = array(), $provider=null)
     {
         $command = $this->client->getCommand('GetGroupVideos',
             array('page' => $page,
@@ -61,7 +61,10 @@ class Api
                 'status' => $status,
                 'sort_field' => $sortField,
                 'sort_direction' => $sortDirection,
-                'ids' => implode(",", $ids)));
+                'ids' => implode(",", $ids),
+                'provider' => $provider,
+            )
+        );
 
         return $this->client->execute($command);
     }
