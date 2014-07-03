@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx/1.4.6 (Ubuntu)
+Date: Thu, 03 Jul 2014 18:02:25 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+X-Powered-By: PHP/5.5.9-1ubuntu4.2
+
+{"tags":{"testertag":"2","testertag123":"1","autotag":"1","una tag":"1","probando":"1","ando":"1","test":"2","otra":"1","t1":"3","t2":"1","yo!":"1","testingext":"2","cafa":"1","notest":"1","pepetag":"3","mcgiggleson":"5","testing":"18","sports":"1","photo":"33"},"providers":{"instagram":"128","instagramPhoto":"7","sparkreel":"384","sparkreelPhoto":"19","twitterPhoto":"13","vine":"23","youtube":"84"}}

@@ -217,6 +217,13 @@ class Api
         return $this->client->execute($command);
     }
 
+    public function getGroupData()
+    {
+        $command = $this->client->getCommand('GetGroupData');
+
+        return $this->client->execute($command);
+    }
+
     /**
      * Publish content as non member to the group specified by $groupEmail.
      *

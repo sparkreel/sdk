@@ -186,6 +186,14 @@
 
             }
         },
+        "GetGroupData": {
+            "httpMethod": "GET",
+            "uri": "group/data",
+            "summary": "Returns tags and providers data for the group associated with the api key.",
+            "parameters": {
+
+            }
+        },
         "GetVideo": {
             "httpMethod": "GET",
             "uri": "video/{id}/embed",
