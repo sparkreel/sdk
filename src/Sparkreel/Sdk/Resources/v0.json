@@ -65,6 +65,11 @@
                     "description": "The provider to filter videos by",
                     "type": "string",
                     "location": "query"
+                },
+                "tags": {
+                    "description": "The tags to filter videos by",
+                    "type": "string",
+                    "location": "query"
                 }
             }
         },
