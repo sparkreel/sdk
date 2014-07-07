@@ -64,8 +64,7 @@
                 "provider": {
                     "description": "The provider to filter videos by",
                     "type": "string",
-                    "location": "query",
-                    "enum": ["sparkreel", "sparkreelPhoto", "instagram", "instagramPhoto", "twitterPhoto", "vine", "youtube"]
+                    "location": "query"
                 }
             }
         },
