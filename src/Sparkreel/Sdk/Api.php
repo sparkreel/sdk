@@ -66,6 +66,7 @@ class Api
                 'sort_direction' => $sortDirection,
                 'ids' => implode(",", $ids),
                 'provider' => $provider,
+                'tags' => $tags,
             )
         );
 
