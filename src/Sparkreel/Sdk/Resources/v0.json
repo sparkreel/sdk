@@ -201,7 +201,12 @@
             "uri": "group/data",
             "summary": "Returns tags and providers data for the group associated with the api key.",
             "parameters": {
-
+                "status": {
+                    "description": "Moderation status of the videos",
+                    "type": "string",
+                    "enum": ["pending", "accepted", "rejected"],
+                    "location": "query"
+                }
             }
         },
         "GetVideo": {

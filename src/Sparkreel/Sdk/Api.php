@@ -224,9 +224,12 @@ class Api
         return $this->client->execute($command);
     }
 
-    public function getGroupData()
+    public function getGroupData($status='accepted')
     {
-        $command = $this->client->getCommand('GetGroupData');
+        $commandParams = array(
+            "status" => $status
+        );
+        $command = $this->client->getCommand('GetGroupData', $commandParams);
 
         return $this->client->execute($command);
     }
