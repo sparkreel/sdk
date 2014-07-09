@@ -209,6 +209,14 @@
                 }
             }
         },
+        "GetGroupTotals": {
+            "httpMethod": "GET",
+            "uri": "group/totals",
+            "summary": "Returns the totals for the group. Total views, total content, etc.",
+            "parameters": {
+
+            }
+        },
         "GetVideo": {
             "httpMethod": "GET",
             "uri": "video/{id}/embed",

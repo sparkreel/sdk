@@ -552,4 +552,11 @@ class Api
 
         return $this->client->execute($command);
     }
+
+    public function getGroupTotals()
+    {
+        $command = $this->client->getCommand('GetGroupTotals', array());
+
+        return $this->client->execute($command);
+    }
 }
