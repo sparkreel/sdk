@@ -8,7 +8,7 @@ class ApiTest extends GuzzleTestCase
 {
   public function testRequestAccessToken()
   {
-    /** 
+    /**
      * @var \Sparkreel\Sdk\OAuth2\Client $client
      */
     $client = $this->getServiceBuilder()->get('test.oauth');
@@ -19,7 +19,7 @@ class ApiTest extends GuzzleTestCase
 
     $this->assertArrayHasKey("access_token", $response);
   }
-  
+
   public function testRequestAccessTokenError()
   {
     /**
@@ -27,8 +27,8 @@ class ApiTest extends GuzzleTestCase
      * client to give us the response instead of throwing an exception?
      */
     $this->setExpectedException('\Guzzle\Http\Exception\ClientErrorResponseException');
-    
-    /** 
+
+    /**
      * @var \Sparkreel\Sdk\OAuth2\Client $client
      */
     $client = $this->getServiceBuilder()->get('test.oauth');

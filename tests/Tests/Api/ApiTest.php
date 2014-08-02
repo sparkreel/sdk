@@ -7,9 +7,6 @@
 
 namespace Sparkreel\Tests\Api;
 
-use Guzzle\Log\MessageFormatter;
-use Guzzle\Log\PsrLogAdapter;
-use Guzzle\Plugin\Log\LogPlugin;
 use Guzzle\Tests\GuzzleTestCase;
 use Sparkreel\Sdk\SparkreelClient;
 
@@ -113,7 +110,7 @@ class ApiTest extends GuzzleTestCase
 
         $this->assertStringStartsWith("https://commondatastorage.googleapis.com/", $video['url']);
     }
-    
+
     public function testUpdateGroup()
     {
         /** @var  \Sparkreel\Sdk\SparkreelClient $client */
@@ -131,7 +128,7 @@ class ApiTest extends GuzzleTestCase
         $this->assertEquals($group['group']['title'], 'Group Title');
         $this->assertEquals($group['group']['config']['watermark_url'], 'http://s3/watermark.png');
     }
-    
+
     public function testGetGroupInfo()
     {
       $client = $this->getServiceBuilder()->get('test.sparkreel');
@@ -143,7 +140,7 @@ class ApiTest extends GuzzleTestCase
       $this->assertArrayHasKey('group', $group);
       $this->assertEquals($group['group']['title'], 'Group Title');
     }
-    
+
     public function testUpdateVideo()
     {
       $client = $this->getServiceBuilder()->get('test.sparkreel');
@@ -154,7 +151,7 @@ class ApiTest extends GuzzleTestCase
 
       $this->assertTrue('rejected' == $response['video']['status']);
     }
-    
+
     public function testDeleteVideo()
     {
       $client = $this->getServiceBuilder()->get('test.sparkreel');
@@ -165,7 +162,7 @@ class ApiTest extends GuzzleTestCase
 
       $this->assertTrue($response['success']);
     }
-    
+
     public function testGetVideoComments()
     {
       $client = $this->getServiceBuilder()->get('test.sparkreel');
@@ -176,7 +173,7 @@ class ApiTest extends GuzzleTestCase
 
       $this->assertArrayHasKey('comments', $response);
     }
-    
+
     public function testPublishMemberContentExternal()
     {
         /** @var  \Sparkreel\Sdk\SparkreelClient $client */
@@ -190,7 +187,7 @@ class ApiTest extends GuzzleTestCase
         $this->assertArrayHasKey("content_id", $res);
         $this->assertEquals("393", $res["content_id"]);
     }
-    
+
     public function testPostComment()
     {
       /** @var  \Sparkreel\Sdk\SparkreelClient $client */
@@ -296,7 +293,6 @@ class ApiTest extends GuzzleTestCase
 
         $this->assertArrayHasKey("topten", $res);
     }
-
 
     public function testGetGroupMembers()
     {
