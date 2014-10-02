@@ -45,7 +45,7 @@
                     "description": "The field to order videos by",
                     "type": "string",
                     "location": "query",
-                    "enum": ["date", "views", "title"],
+                    "enum": ["date", "views", "title", "id"],
                     "default": "date"
                 },
                 "sort_direction": {
@@ -69,6 +69,11 @@
                 "tags": {
                     "description": "The tags to filter videos by",
                     "type": "string",
+                    "location": "query"
+                },
+                "id_since": {
+                    "description": "If se only get content with ids greater than id_since",
+                    "type": "integer",
                     "location": "query"
                 }
             }
