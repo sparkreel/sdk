@@ -71,9 +71,9 @@
                     "type": "string",
                     "location": "query"
                 },
-                "id_since": {
+                "since": {
                     "description": "If se only get content with ids greater than id_since",
-                    "type": "integer",
+                    "type": "string",
                     "location": "query"
                 }
             }

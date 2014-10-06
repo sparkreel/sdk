@@ -50,13 +50,13 @@ class Api
      * @param  array $ids Id's to filter videos to
      * @param  string $provider
      * @param  string $tags
-     * @param  int $idSince
+     * @param  \DateTime $dateSince
      * @return array|\Guzzle\Http\Message\Response
      */
     public function getGroupVideos($limit = 10, $page = 1, $moderationStatus = "accepted",
                                    $status = "ready", $sortField = "date",
                                    $sortDirection = "desc", $ids = array(), $provider=null,
-                                   $tags=null, $idSince=null)
+                                   $tags=null, \DateTime $dateSince=null)
     {
         $command = $this->client->getCommand('GetGroupVideos',
             array('page' => $page,
@@ -68,7 +68,7 @@ class Api
                 'ids' => implode(",", $ids),
                 'provider' => $provider,
                 'tags' => $tags,
-                'id_since' => (int)$idSince,
+                'since' => empty($dateSince) ? '' : $dateSince->format('Y-m-d H:i:s'),
             )
         );
 
