@@ -78,6 +78,7 @@
                 }
             }
         },
+
         "GetGroupVideosByTag": {
             "httpMethod": "GET",
             "uri": "tag/{tag}",
@@ -136,6 +137,66 @@
                     "required": true
                 }
             }
+        },
+        "SearchGroupVideos": {
+          "httpMethod": "GET",
+          "uri": "search",
+          "summary": "Searches for videos in a group.",
+          "parameters": {
+            "page": {
+              "description": "The requested page",
+              "type": "integer",
+              "location": "query",
+              "default": 1
+            },
+            "per_page": {
+              "description": "The number of videos per page",
+              "type": "integer",
+              "location": "query",
+              "default": 10
+            },
+            "moderation_status": {
+              "description": "The modaration status",
+              "type": "string",
+              "location": "query",
+              "enum": ["pending", "accepted", "rejected"],
+              "default": "accepted"
+            },
+            "status": {
+              "description": "The video processing status",
+              "type": "string",
+              "location": "query",
+              "enum": ["pending", "processing", "ready", "error"],
+              "default": "ready"
+            },
+            "sort_field": {
+              "description": "The field to order videos by",
+              "type": "string",
+              "location": "query",
+              "enum": ["date", "views", "title", "id"],
+              "default": "date"
+            },
+            "sort_direction": {
+              "description": "The the direction in which to order videis",
+              "type": "string",
+              "location": "query",
+              "enum": ["asc", "desc"],
+              "default": "asc"
+            },
+            "search_query": {
+              "description": "The search query.",
+              "type": "string",
+              "location": "query",
+              "required": true
+            },
+            "search_operator": {
+              "description": "The search operator",
+              "type": "string",
+              "location": "query",
+              "enum": ["or", "and"],
+              "default": "or"
+            }
+          }
         },
         "AddVideoTag": {
             "httpMethod": "POST",

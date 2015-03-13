@@ -378,6 +378,20 @@ class ApiTest extends GuzzleTestCase
         $this->assertGreaterThan(0, count($res));
     }
 
+    public function testSearchGroup()
+    {
+        /** @var  \Sparkreel\Sdk\SparkreelClient $client */
+        $client = $this->getServiceBuilder()->get('test.sparkreel');
+        $this->setMockResponse($client, array("search"));
+
+        $api = new \Sparkreel\Sdk\Api(null, null, $client);
+
+        $res = $api->searchGroupVideos('nice');
+
+        $this->assertTrue(is_array($res));
+        $this->assertGreaterThan(0, count($res['videos']));
+    }
+
     public function testGetGroupData()
     {
         /** @var  \Sparkreel\Sdk\SparkreelClient $client */

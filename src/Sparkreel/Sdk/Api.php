@@ -80,6 +80,40 @@ class Api
      * the "videos" key will hold $limit number of videos for the requested
      * $page.
      *
+     * @param  int $limit
+     * @param  int $page
+     * @param  string $moderationStatus
+     * @param  string $status
+     * @param  string $sortField
+     * @param  string $sortDirection
+     * @param string $searchQuery
+     * @param string $searchOperator
+     * @return array|\Guzzle\Http\Message\Response
+     */
+    public function searchGroupVideos($searchQuery, $searchOperator="or", $limit = 10, $page = 1, $moderationStatus = "accepted",
+                                   $status = "ready", $sortField = "date",
+                                   $sortDirection = "desc")
+    {
+        $command = $this->client->getCommand('SearchGroupVideos',
+            array('page' => $page,
+                'per_page' => $limit,
+                'moderation_status' => $moderationStatus,
+                'status' => $status,
+                'sort_field' => $sortField,
+                'sort_direction' => $sortDirection,
+                'search_query' => $searchQuery,
+                'search_operator' => $searchOperator,
+            )
+        );
+
+        return $this->client->execute($command);
+    }
+
+    /**
+     * Get an array containing the response of the api. If successful,
+     * the "videos" key will hold $limit number of videos for the requested
+     * $page.
+     *
      * @param $tag
      * @param  int                                 $limit
      * @param  int                                 $page
